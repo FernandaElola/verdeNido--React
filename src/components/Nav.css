@@ -1,0 +1,49 @@
+@import url('../components/Variables.css');
+
+.navbar {
+    background-color: var(--color-claro); /* Usa la variable para el color de fondo */ 
+    display: flex; /* Para alinear los elementos */
+    align-items: center; /* Alineación vertical */
+}
+
+.navbar ul {
+    list-style: none; /* Quita los puntos de la lista */
+    margin: 0; /* Sin margen */
+    padding: 30px 0 30px 0; 
+    display: flex; /* Para alinear horizontalmente */
+    flex: 1;
+    justify-content: space-around;
+}
+
+.navbar a {
+    font-family: 'Roboto', sans-serif; /* Fuente para los enlaces del navbar */
+    text-decoration: none; /* Sin subrayado */
+    color: var(--color-dark-green); /* Usa la variable para el color del texto */
+    font-weight:lighter;
+    font-size:0.8em; /* Tamaño del texto */
+    padding: 10px 50px; /* Espaciado interno */
+    position: relative; /* Para el uso de pseudo-elementos */
+    transition: all 0.3s; /* Animación suave */
+    display: block;
+}
+
+.navbar ul a:hover:after {
+    content: ''; /* Pseudo-elemento vacío para crear la línea de subrayado */
+    position: absolute; /* Posición absoluta para el subrayado */
+    bottom: 0; /* Alinea el subrayado con la parte inferior del elemento 'a' */
+    left: 0; /* Comienza desde la izquierda */
+    width: 100%; /* El subrayado cubre todo el ancho del elemento 'a' */
+    height: 2px; /* Altura del subrayado */
+    background-color: var(--color-dark-green); /* Color del subrayado */
+    transition: width 0.5s; /* Animación para el efecto de subrayado */
+}
+
+a.logo {
+    flex: 0 1 auto; /* Permite que el logo tenga un ancho variable */
+    text-align: center; /* Alinea el logo al centro */
+    padding: 0px; /* Sin padding */
+}
+
+.logo img {
+    height: 70px; /* Tamaño del logo */
+}
