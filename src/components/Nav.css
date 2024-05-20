@@ -1,49 +1,66 @@
-@import url('../components/Variables.css');
-
 .navbar {
-    background-color: var(--color-claro); /* Usa la variable para el color de fondo */ 
-    display: flex; /* Para alinear los elementos */
-    align-items: center; /* Alineación vertical */
+    background-color: rgba(242, 237, 228, 0.8);
+    display: flex;
+    align-items: center;
+    transition: background-color 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    /* Transición más suave con efecto de rebote */
+}
+
+.navbar.fixed {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 99;
 }
 
 .navbar ul {
-    list-style: none; /* Quita los puntos de la lista */
-    margin: 0; /* Sin margen */
-    padding: 30px 0 30px 0; 
-    display: flex; /* Para alinear horizontalmente */
+    list-style: none;
+    margin: 0;
+    padding: 30px 0;
+    display: flex;
     flex: 1;
     justify-content: space-around;
 }
 
 .navbar a {
-    font-family: 'Roboto', sans-serif; /* Fuente para los enlaces del navbar */
-    text-decoration: none; /* Sin subrayado */
-    color: var(--color-dark-green); /* Usa la variable para el color del texto */
-    font-weight:lighter;
-    font-size:0.8em; /* Tamaño del texto */
-    padding: 10px 50px; /* Espaciado interno */
-    position: relative; /* Para el uso de pseudo-elementos */
-    transition: all 0.3s; /* Animación suave */
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    color: var(--color-dark-green);
+    font-weight: lighter;
+    font-size: 0.8em;
+    padding: 10px 50px;
+    position: relative;
+    transition: all 0.3s;
     display: block;
 }
 
 .navbar ul a:hover:after {
-    content: ''; /* Pseudo-elemento vacío para crear la línea de subrayado */
-    position: absolute; /* Posición absoluta para el subrayado */
-    bottom: 0; /* Alinea el subrayado con la parte inferior del elemento 'a' */
-    left: 0; /* Comienza desde la izquierda */
-    width: 100%; /* El subrayado cubre todo el ancho del elemento 'a' */
-    height: 2px; /* Altura del subrayado */
-    background-color: var(--color-dark-green); /* Color del subrayado */
-    transition: width 0.5s; /* Animación para el efecto de subrayado */
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-dark-green);
+    transition: width 0.5s;
 }
 
 a.logo {
-    flex: 0 1 auto; /* Permite que el logo tenga un ancho variable */
-    text-align: center; /* Alinea el logo al centro */
-    padding: 0px; /* Sin padding */
+    flex: 0 1 auto;
+    text-align: center;
+    padding: 0px;
 }
 
 .logo img {
-    height: 70px; /* Tamaño del logo */
+    height: 70px;
 }
+
+.visible {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out; /* Efecto de rebote suave */
+  }
+  
+  .hidden {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out; /* Efecto de rebote suave */
+  }
