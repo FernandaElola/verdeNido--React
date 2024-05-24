@@ -1,7 +1,7 @@
 :root {
-    --color-claro: #f2ede4; 
+    --color-claro: rgb(242, 237, 227); 
     --color-light-green: #daeccd;
     --color-green: #abbe8e;   
-    --color-dark-green: #736c4d;
+    --color-dark-green: rgb(115, 108, 77);
     --color-red: #954926;
 }

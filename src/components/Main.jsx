@@ -16,9 +16,6 @@ export const Main = () => {
                 <FloatingButton />
                 <Nav />
                 <AlojamientoList />
-                <div class="alojamientos">
-                    <h1>Alojamientos</h1>
-                </div>
                 <Footer />
             </main>
         </>
