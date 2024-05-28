@@ -1,0 +1,59 @@
+@import url('../components/Variables.css');
+
+.admin-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .admin-content {
+    display: flex;
+    flex: 1;
+  }
+  
+  .admin-content .main-content {
+    flex: 1;
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .admin-content .main-content table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .admin-content .main-content table, 
+  .admin-content .main-content th, 
+  .admin-content .main-content td {
+    border: 1px solid #ddd;
+  }
+  
+  .admin-content .main-content th, 
+  .admin-content .main-content td {
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .admin-content .main-content th {
+    background-color: #f2f2f2;
+  }
+  
+  .admin-content .main-content button {
+    margin: 0 5px;
+    padding: 5px 10px;   
+    color: white;
+    border: none;
+    cursor: pointer;    
+    border-radius: 5px;
+  }
+
+  .admin-content .main-content button.edit {
+    background-color: #4CAF50;
+  }
+  
+  .admin-content .main-content button.delete {
+    background-color: #f44336;
+  }
+  
+
+  

@@ -41,6 +41,7 @@ export const Nav = () => {
       <ul className="nav-right">
         <li><Link to="/" onClick={handleClick}>ALOJAMIENTOS</Link></li>
         <li><a href="#login">INICIAR SESION</a></li>
+        <li><a href="/admin">ADMIN</a></li>
       </ul>
     </nav>
   );
