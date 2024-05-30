@@ -1,4 +1,4 @@
-@import url('../components/Variables.css');
+@import url('../../components/Variables.css');
 
 .admin-container {
     display: flex;

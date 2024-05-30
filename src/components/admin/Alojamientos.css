@@ -1,4 +1,4 @@
-@import url('../components/Variables.css');
+@import url('../../components/Variables.css');
 
 .admin-container {
     display: flex;
@@ -15,6 +15,25 @@
     flex: 1;
     padding: 20px;
     background-color: #f9f9f9;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .add-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .add-button:hover {
+    background-color: #218838;
   }
   
   .admin-content .main-content table {

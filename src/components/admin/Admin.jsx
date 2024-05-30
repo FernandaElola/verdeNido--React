@@ -1,9 +1,7 @@
-import './Cabañas.css';
-import Nav from './Nav';
+import './Alojamientos.css';
+import Nav from '../Nav';
 import AdminSidebar from './AdminSidebar';
-import Cabañas from './Cabañas';
-import Reservas from './Reservas';
-import { Routes, Route } from 'react-router-dom';
+import AddTipoAlojamiento from './form/AddTipoAlojamiento';
 
 const Admin = () => {
   return (
@@ -11,6 +9,7 @@ const Admin = () => {
     <Nav />
     <div className="admin-content">
       <AdminSidebar />
+      <AddTipoAlojamiento />
       <div className="main-content">
       </div>
     </div>
