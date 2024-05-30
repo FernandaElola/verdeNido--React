@@ -7,10 +7,9 @@ const AdminSidebar = () => {
     <div className="sidebar">
       <h2>Admin Alojamientos</h2>
       <ul>
-        <li><Link to="/admin/cabañas">Cabañas</Link></li>
-        <li><Link to="/admin/reservas">Reservas</Link></li>
-        <li><Link to="/admin">Usuarios</Link></li>
-        <li><Link to="/admin">Ajustes</Link></li>
+        <li><Link to="/admin/alojamientos">Alojamientos</Link></li>
+        <li><Link to="/admin">Imagenes</Link></li>
+        <li><Link to="/admin">Tipo de Alojamientos</Link></li>
       </ul>
     </div>
   );
