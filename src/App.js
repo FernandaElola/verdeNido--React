@@ -4,8 +4,9 @@ import { Main } from './components/Main';
 import { Contact } from './components/Contact';
 import About from './components/About';
 import Alojamientos from './components/admin/Alojamientos';
-import Reservas from './components/admin/Reservas';
+import AddAlojamiento from './components/admin/form/AddAlojamiento';
 import AddTipoAlojamiento from './components/admin/form/AddTipoAlojamiento';
+import TipoDeAlojamiento from './components/admin/TipoDeAlojamiento';
 
 function App() {
   return (
@@ -18,8 +19,9 @@ function App() {
           <Route path="/main" element={<Main />} />
           <Route path="/admin" element={<Alojamientos />} />
           <Route path="/admin/alojamientos" element={<Alojamientos />} />
-          <Route path="/admin/reservas" element={<Reservas />} />
-          <Route path="/agregar-alojamiento" element={<AddTipoAlojamiento />} />
+          <Route path="/agregar-alojamiento" element={<AddAlojamiento />} />
+          <Route path="/admin/tipo-alojamiento/agregar" element={<AddTipoAlojamiento />} />
+          <Route path="/admin/tipo-alojamiento" element={<TipoDeAlojamiento />} />
         </Routes>
       </>
     </Router> 
