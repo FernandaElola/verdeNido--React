@@ -14,7 +14,7 @@
   .admin-content .main-content {
     flex: 1;
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: var(--color-claro);
   }
   
   .admin-content .main-content table {
@@ -25,7 +25,7 @@
   .admin-content .main-content table, 
   .admin-content .main-content th, 
   .admin-content .main-content td {
-    border: 1px solid #ddd;
+    border: 1px solid var(--color-dark-green);
   }
   
   .admin-content .main-content th, 
@@ -35,9 +35,15 @@
   }
   
   .admin-content .main-content th {
-    background-color: #f2f2f2;
+    background-color: rgb(115, 108, 77,0.8);
+    color: white;
   }
-  
+
+  .admin-content .main-content .add-button a{
+    text-decoration: none;
+    color: white;
+  }
+
   .admin-content .main-content button {
     margin: 0 5px;
     padding: 5px 10px;   
