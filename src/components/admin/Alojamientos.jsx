@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import './Alojamiento.css';
 import Nav from '../Nav';
 import AdminSidebar from './AdminSidebar';
