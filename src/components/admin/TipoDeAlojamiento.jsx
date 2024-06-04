@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Nav from '../Nav';
-import './TipoAlojamiento.css';
+import './Alojamiento.css';
 import AdminSidebar from './AdminSidebar';
 import { Link } from 'react-router-dom';
 
