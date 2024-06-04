@@ -1,10 +1,12 @@
 import React, { useState  } from 'react';
 import Nav from '../../Nav';
 import './AddTipoAlojamiento.css';
+import { useNavigate } from 'react-router-dom';
 
 const AddTipoAlojamiento = () => {
 
   const [descripcion, setDescription] = useState('');
+  const navigate = useNavigate();
 
   const enviar = async (e) => {
     e.preventDefault();
@@ -26,10 +28,15 @@ const AddTipoAlojamiento = () => {
 
       setDescription('');
       alert('Tipo de alojamiento creado con éxito');
+      navigate('/admin/tipo-alojamiento');
     } catch (error) {
       console.error('Error:', error);
     }
   }
+
+  const handleCancel = () => {
+    navigate('/admin/tipo-alojamiento');
+  };
 
   return (
     <div className="main-container">
@@ -48,7 +55,10 @@ const AddTipoAlojamiento = () => {
                 onChange={(e) => setDescription(e.target.value)}
               />
             </div>
-            <button type="submit">Enviar</button>
+            <div className="buttons">
+              <button type="submit">Enviar</button>
+              <button className="cancel" type="button" onClick={handleCancel}>Cancelar</button>
+            </div>         
           </form>
         </div>
 
