@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState  } from 'react';
 import Nav from '../../Nav';
 import './AddTipoAlojamiento.css';
 
@@ -9,7 +9,7 @@ const AddTipoAlojamiento = () => {
   const enviar = async (e) => {
     e.preventDefault();
     const json = {
-      Description: descripcion
+      Descripcion: descripcion
     };
 
     try {
@@ -28,7 +28,6 @@ const AddTipoAlojamiento = () => {
       alert('Tipo de alojamiento creado con éxito');
     } catch (error) {
       console.error('Error:', error);
-      alert('Hubo un problema al crear el tipo de alojamiento');
     }
   }
 
@@ -38,7 +37,7 @@ const AddTipoAlojamiento = () => {
       <div className="content-container">
         <div className="form-container">
           
-      <h2>Agregar tipo alojamiento</h2>
+      <h2>Agregar Tipo Alojamiento</h2>
           <form onSubmit={enviar}>
             <div>
               <label htmlFor="descripcion">Descripción</label>
@@ -52,6 +51,7 @@ const AddTipoAlojamiento = () => {
             <button type="submit">Enviar</button>
           </form>
         </div>
+
       </div>
     </div>
   );

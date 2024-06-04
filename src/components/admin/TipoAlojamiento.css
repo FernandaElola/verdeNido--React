@@ -1,0 +1,115 @@
+@import url('../../components/Variables.css');
+
+.admin-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .admin-content {
+    display: flex;
+    flex: 1;
+  }
+  
+  .admin-content .main-content {
+    flex: 1;
+    padding: 20px;
+    background-color: var(--color-claro);
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .add-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;    
+    text-decoration: none;
+  }
+  
+  .add-button:hover {
+    background-color: #218838;
+  }
+  
+  .admin-content .main-content table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .admin-content .main-content table, 
+  .admin-content .main-content th, 
+  .admin-content .main-content td {
+    border: 1px solid var(--color-dark-green);
+  }
+  
+  .admin-content .main-content th, 
+  .admin-content .main-content td {
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .admin-content .main-content th {
+    background-color: rgb(115, 108, 77,0.8);
+    color: white;
+  }
+
+  .admin-content .main-content .add-button a{
+    text-decoration: none;
+    color: white;
+  }
+
+  .admin-content .main-content button {
+    margin: 0 5px;
+    padding: 5px 10px;   
+    color: white;
+    border: none;
+    cursor: pointer;    
+    border-radius: 5px;
+    text-decoration: none;
+  }
+
+  .admin-content .main-content button.edit {
+    background-color: #4CAF50;
+  }
+
+  .admin-content .main-content button.delete {
+    background-color: red;
+  }
+  
+  .sidebar {
+    width: 250px;
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    height: 100vh;
+  }
+  
+  .sidebar h2 {
+    text-align: center;
+  }
+  
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sidebar ul li {
+    margin: 15px 0;
+  }
+  
+  .sidebar ul li a {
+    color: white;
+    text-decoration: none;
+  }
+
+
+
+
+
+  
