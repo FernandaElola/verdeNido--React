@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './AlojamientoCard.css';
+import { Link } from 'react-router-dom';
 
 const AlojamientoCard = ({ alojamiento }) => {
   const [showDetails, setShowDetails] = useState(false); // Cambiado a false para ocultar los detalles predeterminadamente
@@ -46,6 +47,10 @@ const AlojamientoCard = ({ alojamiento }) => {
           <span className="detail-number">5</span> Estado: {alojamiento.estado}
         </li>
       </ul>
+            {/* Botón para ver más detalles */}
+            <Link to={`/details/${alojamiento.id}`}>
+        <button className="more-details-button">Quiero ver más detalles →</button>
+      </Link>
     </div>
   );
 };
