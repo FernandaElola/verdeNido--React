@@ -59,7 +59,12 @@
   .admin-content .main-content th {
     background-color: rgb(115, 108, 77,0.5);
   }
-  
+
+  .admin-content .main-content .add-button a{
+    text-decoration: none;
+    color: white;
+  }
+
   .admin-content .main-content button {
     margin: 2px 5px;
     padding: 5px 10px;   
