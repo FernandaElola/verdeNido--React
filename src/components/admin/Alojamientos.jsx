@@ -2,17 +2,27 @@ import React, { useState, useEffect } from 'react';
 import './Alojamiento.css';
 import Nav from '../Nav';
 import AdminSidebar from './AdminSidebar';
-import { Link } from 'react-router-dom';
-
-const cabins = [
-  { id: 1, name: 'Cabaña frente al lago', description: 'Cabaña frente al lago', latitude: 432, longitude: 234, price: 120000, rooms: 3, bathrooms: 2, state: 'Rio Negro', tipoAlojamiento: 'Cabaña' },
-  { id: 2, name: 'Hotel Santa Fe', description: 'Hotel Santa Fe', latitude: 234, longitude: 334, price: 80000, rooms: 2, bathrooms: 2, state: 'Santa Fe', tipoAlojamiento: 'Hotel' }
-];  
+import { Link, useNavigate } from 'react-router-dom';
+import { fetchAlojamientos } from '../../utils/api';
 
 const Alojamientos = () => {
-  const handleClickAdd = () => {
-    alert('Click Add');
-  };
+
+  const [alojamientos, setAlojamiento] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await fetchAlojamientos();
+        setAlojamiento(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const handleClickEdit = () => {
     alert('Click Editar');
   };
@@ -24,17 +34,17 @@ const Alojamientos = () => {
     <div className="admin-container">
       <Nav />
       <div className="admin-content">
-      <AdminSidebar />
+        <AdminSidebar />
         <div className="main-content">
           <div className="header">
             <h2>Alojamientos</h2>
-            <Link className="add-button" to="" onClick={handleClickAdd}>+</Link>
+            <Link className="add-button" to="/admin/alojamiento/agregar">+</Link>
           </div>
           <table>
             <thead>
               <tr>
                 <th>ID</th>
-                <th>Nombre</th>
+                <th>Título</th>
                 <th>Descripción</th>
                 <th>Latitud</th>
                 <th>Longitud</th>
@@ -43,24 +53,25 @@ const Alojamientos = () => {
                 <th>Baños</th>
                 <th>Estado</th>
                 <th>Tipo Alojamiento</th>
+                <th>Acciones</th>
               </tr>
             </thead>
             <tbody>
-              {cabins.map(cabin => (
-                <tr key={cabin.id}>
-                  <td>{cabin.id}</td>
-                  <td>{cabin.name}</td>
-                  <td>{cabin.description}</td>
-                  <td>{cabin.latitude}</td>
-                  <td>{cabin.longitude}</td>
-                  <td>${cabin.price}</td>
-                  <td>{cabin.rooms}</td>
-                  <td>{cabin.bathrooms}</td>
-                  <td>{cabin.state}</td> 
-                  <td>{cabin.tipoAlojamiento}</td>                      
+              {alojamientos.map(alojamiento => (
+                <tr key={alojamiento.idAlojamiento}>
+                  <td>{alojamiento.idAlojamiento}</td>
+                  <td>{alojamiento.Titulo}</td>
+                  <td>{alojamiento.Descripcion}</td>
+                  <td>{alojamiento.Latitud}</td>
+                  <td>{alojamiento.Longitud}</td>
+                  <td>${alojamiento.PrecioPorDia}</td>
+                  <td>{alojamiento.CantidadDormitorios}</td>
+                  <td>{alojamiento.CantidadBanios}</td>
+                  <td>{alojamiento.Estado}</td> 
+                  <td>{alojamiento.TipoAlojamiento}</td>                      
                   <td>
-                    <button className="edit" onClick={handleClickEdit}>Editar</button>
-                    <button className="delete" onClick={handleClickDelete}>Borrar</button>
+                    <button className="edit" onClick={() => handleClickEdit(alojamiento.idAlojamiento)}>Editar</button>
+                    <button className="delete" onClick={() => handleClickDelete(alojamiento.idAlojamiento)}>Borrar</button>
                   </td>
                 </tr>
               ))}
