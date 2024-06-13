@@ -1,59 +1,197 @@
-import React, { useState  } from 'react';
+import React, { useState, useEffect } from 'react';
 import Nav from '../../Nav';
 import './AddTipoAlojamiento.css';
+import { useNavigate } from 'react-router-dom';
+import { fetchAlojamientos, fetchTiposAlojamiento } from '../../../utils/api';
 
-const AddTipoAlojamiento = () => {
+const AddAlojamiento = () => {
+  const navigate = useNavigate();
+  const [alojamiento, setAlojamiento] = useState([]);
+  const [tipoAlojamientoOptions, setTipoAlojamientoOptions] = useState([]);
+  const [form, setForm] = useState({
+    titulo: '',
+    descripcion: '',
+    latitud: '',
+    longitud: '',
+    precioPorDia: '',
+    cantidadDormitorios: '',
+    cantidadBanios: '',
+    estado: '',
+    tipoAlojamiento: ''
+  });
 
-  const [descripcion, setDescripcion] = useState('');
-  
-  const enviar = async (e) => {
-    e.preventDefault();
-    const json = {
-      Descripcion: descripcion
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const alojamientoData = await fetchAlojamientos();
+        setAlojamiento(alojamientoData);
+
+        const tipoAlojamientoData = await fetchTiposAlojamiento();
+        console.log('Fetched tipoAlojamientoOptions:', tipoAlojamientoData);
+        setTipoAlojamientoOptions(tipoAlojamientoData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
     };
 
+    fetchData();
+  }, []);
+
+  const enviar = async (e) => {
+    e.preventDefault();
     try {
-      const response = await fetch('http://localhost:3001/tiposAlojamiento/createTipoAlojamiento', {
+      const response = await fetch('http://localhost:3001/alojamiento/createAlojamiento', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(json)
+        body: JSON.stringify(form)
       });
 
-      const data = await response.json();
-      console.log('Success:', data);
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Success:', data);
 
-      setDescripcion('');
+        setForm({
+          titulo: '',
+          descripcion: '',
+          latitud: '',
+          longitud: '',
+          precioPorDia: '',
+          cantidadDormitorios: '',
+          cantidadBaniosanos: '',
+          estado: '',
+          tipoAlojamiento: ''
+        });
+      } else {
+        console.error('Error:', response.statusText);
+      }
     } catch (error) {
       console.error('Error:', error);
     }
-  }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm(prevForm => ({ ...prevForm, [name]: value }));
+  };
+
+  const handleCancel = () => {
+    navigate('/admin/alojamientos');
+  };
 
   return (
     <div className="main-container">
       <Nav />
       <div className="content-container">
         <div className="form-container">
-          
-      <h2>Agregar Alojamiento</h2>
+          <h2>Agregar Alojamiento</h2>
           <form onSubmit={enviar}>
+            <div>
+              <label htmlFor="titulo">Título</label>
+              <input
+                type="text"
+                id="titulo"
+                name="titulo"
+                value={form.titulo}
+                onChange={handleChange}
+              />
+            </div>
             <div>
               <label htmlFor="descripcion">Descripción</label>
               <input
                 type="text"
                 id="descripcion"
-                value={descripcion}
-                onChange={(e) => setDescripcion(e.target.value)}
+                name="descripcion"
+                value={form.descripcion}
+                onChange={handleChange}
               />
             </div>
-            <button type="submit">Enviar</button>
+            <div>
+              <label htmlFor="latitud">Latitud</label>
+              <input
+                type="texto"
+                id="latitud"
+                name="latitud"
+                value={form.latitud}
+                onChange={handleChange}
+              />
+            </div>
+            <div>
+              <label htmlFor="longitud">Longitud</label>
+              <input
+                type="texto"
+                id="longitud"
+                name="longitud"
+                value={form.longitud}
+                onChange={handleChange}
+              />
+            </div>
+            <div>
+              <label htmlFor="precioPorDia">Precio por día</label>
+              <input
+                type="number"
+                id="precioPorDia"
+                name="precioPorDia"
+                value={form.precioPorDia}
+                onChange={handleChange}
+              />
+            </div>
+            <div>
+              <label htmlFor="cantidadDormitorios">Dormitorios</label>
+              <input
+                type="number"
+                id="cantidadDormitorios"
+                name="cantidadDormitorios"
+                value={form.cantidadDormitorios}
+                onChange={handleChange}
+              />
+            </div>
+            <div>
+              <label htmlFor="cantidadBanios">Baños</label>
+              <input
+                type="number"
+                id="cantidadBanios"
+                name="cantidadBanios"
+                value={form.cantidadBanios}
+                onChange={handleChange}
+              />
+            </div>
+            <div>
+              <label htmlFor="estado">Estado</label>
+              <input
+                type="text"
+                id="estado"
+                name="estado"
+                value={form.estado}
+                onChange={handleChange}
+              />
+            </div>
+            <div>
+              <label htmlFor="tipoAlojamiento">Tipo Alojamiento</label>
+              <select
+                id="tipoAlojamiento"
+                name="tipoAlojamiento"
+                value={form.tipoAlojamiento}
+                onChange={handleChange}
+              >
+                <option value="">Seleccione un tipo de alojamiento</option>
+                {tipoAlojamientoOptions.map(option => (
+                  <option key={option.idTipoAlojamiento} value={option.idTipoAlojamiento}>
+                    {option.Descripcion}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="buttons">
+              <button type="submit">Enviar</button>
+              <button className="cancel" type="button" onClick={handleCancel}>Cancelar</button>
+            </div>         
           </form>
         </div>
-
       </div>
     </div>
   );
 };
 
-export default AddTipoAlojamiento;
+export default AddAlojamiento;
