@@ -19,7 +19,7 @@ function App() {
           <Route path="/main" element={<Main />} />
           <Route path="/admin" element={<Alojamientos />} />
           <Route path="/admin/alojamientos" element={<Alojamientos />} />
-          <Route path="/agregar-alojamiento" element={<AddAlojamiento />} />
+          <Route path="/admin/alojamiento/agregar" element={<AddAlojamiento />} />
           <Route path="/admin/tipo-alojamiento/agregar" element={<AddTipoAlojamiento />} />
           <Route path="/admin/tipo-alojamiento" element={<TipoDeAlojamiento />} />
         </Routes>

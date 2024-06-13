@@ -3,6 +3,7 @@ import Nav from '../Nav';
 import './Alojamiento.css';
 import AdminSidebar from './AdminSidebar';
 import { Link } from 'react-router-dom';
+import { fetchTiposAlojamiento } from '../../utils/api';
 
 const TipoDeAlojamientos = () => {
   const [tiposAlojamiento, setTiposAlojamiento] = useState([]);
@@ -10,17 +11,16 @@ const TipoDeAlojamientos = () => {
   const [editDescripcion, setEditDescripcion] = useState('');
 
   useEffect(() => {
-    const fetchTiposAlojamiento = async () => {
+    const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:3001/tiposAlojamiento/getTiposAlojamiento');
-        const data = await response.json();
+        const data = await fetchTiposAlojamiento();
         setTiposAlojamiento(data);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     };
 
-    fetchTiposAlojamiento();
+    fetchData();
   }, []);
 
   const handleClickDelete = async (idTipoAlojamiento) => {
