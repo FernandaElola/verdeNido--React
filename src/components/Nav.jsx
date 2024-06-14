@@ -40,7 +40,6 @@ export const Nav = () => {
       <Link className="logo" to="/" onClick={handleClick}><img src="/img/LOGO FOTO.png" alt="Logo" /></Link>
       <ul className="nav-right">
         <li><Link to="/" onClick={handleClick}>ALOJAMIENTOS</Link></li>
-        <li><a href="#login">INICIAR SESION</a></li>
         <li><a href="/admin">ADMIN</a></li>
       </ul>
     </nav>

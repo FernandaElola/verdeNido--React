@@ -80,7 +80,7 @@ const TipoDeAlojamientos = () => {
         <div className="main-content">
           <div className="header">
             <h2>Tipos de Alojamientos</h2>
-              <Link className="add-button" to="/admin/tipo-alojamiento/agregar">+</Link>
+            <Link className="add-button" to="/admin/tipo-alojamiento/agregar">+</Link>
           </div>
           <table>
             <thead>
@@ -91,7 +91,7 @@ const TipoDeAlojamientos = () => {
               </tr>
             </thead>
             <tbody>
-              {tiposAlojamiento.map((tipo, index) => (
+              {Array.isArray(tiposAlojamiento) && tiposAlojamiento.map((tipo, index) => (
                 <tr key={tipo.idTipoAlojamiento}>
                   <td>{tipo.idTipoAlojamiento}</td>
                   <td>
@@ -120,6 +120,7 @@ const TipoDeAlojamientos = () => {
                   </td>
                 </tr>
               ))}
+
             </tbody>
           </table>
         </div>
