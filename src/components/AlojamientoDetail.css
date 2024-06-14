@@ -1,0 +1,57 @@
+/* AlojamientoDetail.css */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500&display=swap');
+@import url('../components/Variables.css');
+
+/* Estilo general para la página de detalles */
+.alojamiento-detail {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    height: 80vh;
+    background-color: var(--color-claro); /* Fondo similar al about */
+    color: var(--color-dark-green);
+    font-family: "Cormorant Garamond", serif;
+}
+
+/* Columna de detalles */
+.alojamiento-detail .details-column {
+    width: 50%;
+    padding: 20px;
+    border-radius: 20px;
+    
+}
+
+.alojamiento-detail .details-column p, .details-column ul {
+    font-size: 1.2em; /* Tamaño de fuente del texto */
+    line-height: 1.6; /* Espaciado entre líneas */
+    margin: 10px 0;
+}
+
+.alojamiento-detail .details-column ul {
+    padding-left: 20px; /* Espaciado para la lista */
+}
+
+.alojamiento-detail .details-column ul li {
+    margin-bottom: 10px;
+}
+
+/* Columna del mapa */
+.alojamiento-detail .map-column {
+    width: 50%;
+    padding: 20px;
+}
+
+.alojamiento-detail .map-container {
+    height: 100%; /* El mapa ocupa toda la columna */
+    border: 2px solid var(--color-dark-green);
+}
+
+/* Estilo del título */
+.alojamiento-detail  .title {
+    color: var(--color-text); /* Color del texto */
+    font-size: 2em;
+    letter-spacing: -3px;
+    margin: 0px 0px 20px 0px;
+    display: flex;
+    align-items: center;
+}

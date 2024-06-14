@@ -18,7 +18,7 @@ const AlojamientoCard = ({ alojamiento }) => {
           <div className="details-overlay">
             <div className="details-container">
               <ul className="alojamiento-details">
-                {alojamiento.Descripción}
+                {alojamiento.Descripcion}
               </ul>
             </div>
           </div>
