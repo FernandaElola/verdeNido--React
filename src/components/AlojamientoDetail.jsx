@@ -1,14 +1,15 @@
-// AlojamientoDetail.js
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchAlojamientos } from '../utils/api.js';
+import { fetchAlojamientos, fetchImagenes } from '../utils/api.js';
 import MapView from './MapView';
 import './AlojamientoDetail.css';
 import Nav from './Nav.jsx';
+import ImageCarousel from './ImageCarousel'; // Importa el nuevo componente de carrusel
 
 const AlojamientoDetail = () => {
     const { id } = useParams();
     const [alojamiento, setAlojamiento] = useState(null);
+    const [imagenes, setImagenes] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -17,6 +18,13 @@ const AlojamientoDetail = () => {
             try {
                 const alojamientos = await fetchAlojamientos();
                 const selectedAlojamiento = alojamientos.find(alo => alo.idAlojamiento === parseInt(id));
+                
+                if (selectedAlojamiento) {
+                    const images = await fetchImagenes();
+                    const alojamientoImages = images.filter(img => img.idAlojamiento === parseInt(id));
+                    setImagenes(alojamientoImages);
+                }
+
                 setAlojamiento(selectedAlojamiento);
                 setLoading(false);
             } catch (err) {
@@ -33,7 +41,7 @@ const AlojamientoDetail = () => {
     if (!alojamiento) return <div>No se encontró el alojamiento</div>;
 
     return (
-        <div>
+        <div >
             <Nav />
             <div className="nav-placeholder"></div>
             <div className="alojamiento-detail">
@@ -56,6 +64,12 @@ const AlojamientoDetail = () => {
                     </div>
                 </div>
             </div>
+            {/* Añadir el componente del carrusel */}
+            {imagenes.length > 0 && (
+                <div className="carousel-container">
+                    <ImageCarousel images={imagenes} />
+                </div>
+            )}
         </div>
     );
 };

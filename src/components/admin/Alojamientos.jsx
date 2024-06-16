@@ -68,7 +68,7 @@ const Alojamientos = () => {
                   <td>{alojamiento.CantidadDormitorios}</td>
                   <td>{alojamiento.CantidadBanios}</td>
                   <td>{alojamiento.Estado}</td> 
-                  <td>{alojamiento.TipoAlojamiento}</td>                      
+                  <td>{alojamiento.idTipoAlojamiento}</td>                      
                   <td>
                     <button className="edit" onClick={() => handleClickEdit(alojamiento.idAlojamiento)}>Editar</button>
                     <button className="delete" onClick={() => handleClickDelete(alojamiento.idAlojamiento)}>Borrar</button>

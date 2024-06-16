@@ -1,5 +1,4 @@
 /* AlojamientoDetail.css */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500&display=swap');
 @import url('../components/Variables.css');
 
 /* Estilo general para la página de detalles */
@@ -7,7 +6,7 @@
     display: flex;
     justify-content: space-between;
     padding: 10px;
-    height: 80vh;
+    height: 70vh;
     background-color: var(--color-claro); /* Fondo similar al about */
     color: var(--color-dark-green);
     font-family: "Cormorant Garamond", serif;
@@ -55,3 +54,14 @@
     display: flex;
     align-items: center;
 }
+
+.carousel-container {
+    height: 70vh;
+    width: 100%;
+    padding: 20px 0 20px 0;
+    background: var(--color-claro);
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+  }
+  
