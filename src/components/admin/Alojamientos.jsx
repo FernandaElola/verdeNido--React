@@ -3,18 +3,18 @@ import './Alojamiento.css';
 import Nav from '../Nav';
 import AdminSidebar from './AdminSidebar';
 import { Link, useNavigate } from 'react-router-dom';
-import { fetchAlojamientos } from '../../utils/api';
+import { fetchAlojamientos, deleteAlojamiento } from '../../utils/api';
 
 const Alojamientos = () => {
 
-  const [alojamientos, setAlojamiento] = useState([]);
+  const [alojamientos, setAlojamientos] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const data = await fetchAlojamientos();
-        setAlojamiento(data);
+        setAlojamientos(data);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -23,11 +23,26 @@ const Alojamientos = () => {
     fetchData();
   }, []);
 
-  const handleClickEdit = () => {
-    alert('Click Editar');
+  const handleClickEdit = (id) => {
+    alert(`Click Editar ID: ${id}`);
   };
-  const handleClickDelete = () => {
-    alert('Click Borrar');
+
+  const handleClickDelete = async (id) => {
+    try {
+      const response = await deleteAlojamiento(id);
+      if (response.ok) {
+        alert('Alojamiento borrado correctamente');
+        // Refrescar la lista de alojamientos después del borrado
+        const updatedAlojamientos = alojamientos.filter(alojamiento => alojamiento.idAlojamiento !== id);
+        setAlojamientos(updatedAlojamientos);
+      } else {
+        console.error('Error al borrar el alojamiento:', response.statusText);
+        alert('Error al intentar borrar el alojamiento');
+      }
+    } catch (error) {
+      console.error('Error al borrar el alojamiento:', error.message);
+      alert('Error al intentar borrar el alojamiento');
+    }
   };
 
   return (
@@ -67,8 +82,8 @@ const Alojamientos = () => {
                   <td>${alojamiento.PrecioPorDia}</td>
                   <td>{alojamiento.CantidadDormitorios}</td>
                   <td>{alojamiento.CantidadBanios}</td>
-                  <td>{alojamiento.Estado}</td> 
-                  <td>{alojamiento.idTipoAlojamiento}</td>                      
+                  <td>{alojamiento.Estado}</td>
+                  <td>{alojamiento.idTipoAlojamiento}</td>
                   <td>
                     <button className="edit" onClick={() => handleClickEdit(alojamiento.idAlojamiento)}>Editar</button>
                     <button className="delete" onClick={() => handleClickDelete(alojamiento.idAlojamiento)}>Borrar</button>

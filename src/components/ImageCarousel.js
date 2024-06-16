@@ -8,13 +8,18 @@ const ImageCarousel = ({ images }) => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
-    slidesToShow: 1,
+    speed: 1000,
+    slidesToShow: 1, // Muestra 1 imagen a la vez
     slidesToScroll: 1,
-    arrows: true, // Activar flechas
-    nextArrow: <SampleNextArrow />, // Componente para la flecha siguiente
-    prevArrow: <SamplePrevArrow />, // Componente para la flecha anterior
+    arrows: true,
+    centerMode: true, // Activa el modo centro
+    centerPadding: '20%', // Espacio entre la imagen activa y las imágenes recortadas
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
     adaptiveHeight: true,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    cssEase: "linear"
   };
 
   return (
@@ -30,7 +35,6 @@ const ImageCarousel = ({ images }) => {
   );
 };
 
-// Componente para la flecha siguiente
 const SampleNextArrow = (props) => {
   const { className, style, onClick } = props;
   return (
@@ -42,7 +46,6 @@ const SampleNextArrow = (props) => {
   );
 };
 
-// Componente para la flecha anterior
 const SamplePrevArrow = (props) => {
   const { className, style, onClick } = props;
   return (

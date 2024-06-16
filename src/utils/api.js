@@ -43,6 +43,17 @@ export const fetchServicios = async () => {
   }
 };
 
+export const fetchAlojamientoServicios = async () => {
+  try {
+    const response = await fetch('http://localhost:3001/alojamientosServicios/getAllAlojamientoServicios');
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching AlojamientoServicios:', error);
+    throw error;
+  }
+};
+
 export const crearAlojamientos = async (alojamientos) => {
   try {
     await Promise.all(alojamientos.map(async (alojamiento) => {
@@ -108,5 +119,16 @@ export const crearServicios = async (servicios) => {
   } catch (error) {
     console.error('Error creating servicios:', error);
     throw error;
+  }
+};
+
+export const deleteAlojamiento = async (id) => {
+  try {
+    const response = await fetch(`http://localhost:3001/alojamiento/deleteAlojamiento/${id}`, {
+      method: 'DELETE',
+    });
+    return response;
+  } catch (error) {
+    throw new Error('Error al intentar borrar el alojamiento');
   }
 };

@@ -1,35 +1,33 @@
 .carousel-wrapper {
-    width: 100%;
-    max-width: 800px; /* Ajusta esto según sea necesario */
-    margin: 0 auto;
-    overflow: hidden;
-  }
-  
-  .carousel-slide {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: auto;
-  }
-  
-  .carousel-image {
-    width: 100%;
-    height: 70vh;
-    object-fit: cover;
-    object-position:center;
-    border-radius: 10px;
-  }
-  
-  /* Estilos personalizados para las flechas de navegación */
-  .custom-arrow {
-    z-index: 2;
-  }
-  
-  .custom-arrow-next {
-    right: 10px; /* Ajusta la posición según sea necesario */
-  }
-  
-  .custom-arrow-prev {
-    left: 10px; /* Ajusta la posición según sea necesario */
-  }
-  
+  width: 100%; /* Ajusta el ancho del carousel según sea necesario */
+}
+
+.carousel-slide {
+  padding-right: 20px; /* Espacio entre cada slide */
+}
+
+.carousel-image {
+  width: 90%; /* Se ajustará dinámicamente según el ancho de la imagen */
+  height: 400px; /* Altura fija de cada slide */
+  border-radius: 10px;
+  object-fit: cover;
+  object-position:bottom;
+}
+
+.slick-list {
+  overflow: visible !important; /* Permite que las imágenes se muestren parcialmente fuera del carousel */
+  width: 300px;
+}
+
+/* Estilos personalizados para las flechas de navegación */
+.custom-arrow {
+  z-index: 2;
+}
+
+.custom-arrow-next {
+  right: 10px; /* Ajusta la posición según sea necesario */
+}
+
+.custom-arrow-prev {
+  left: 10px; /* Ajusta la posición según sea necesario */
+}
