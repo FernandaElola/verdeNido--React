@@ -18,7 +18,7 @@
     }
     .container p {
         margin: 0 0 20px 0;
-        font-weight:bold;
+        font-size: 18px;
     }
     h1, h2 {
         text-align: center;
@@ -31,6 +31,7 @@
     }
     .apartado {
         margin: 40px 0 40px 0;
+        font-size: 20px;
     }
     form {
         margin-top: 40px;
@@ -40,6 +41,7 @@
         margin: 20px 0 5px;
         color: var(--color-red);
         font-weight: bold;
+        font-size: 20px;
     }
     input, select {
         width: 100%;

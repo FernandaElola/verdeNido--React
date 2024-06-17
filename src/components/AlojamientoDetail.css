@@ -1,5 +1,4 @@
 /* AlojamientoDetail.css */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500&display=swap');
 @import url('../components/Variables.css');
 
 /* Estilo general para la página de detalles */
@@ -8,7 +7,8 @@
     justify-content: space-between;
     padding: 10px;
     height: 80vh;
-    background-color: var(--color-claro); /* Fondo similar al about */
+    background-color: var(--color-claro);
+    /* Fondo similar al about */
     color: var(--color-dark-green);
     font-family: "Cormorant Garamond", serif;
 }
@@ -18,20 +18,16 @@
     width: 50%;
     padding: 20px;
     border-radius: 20px;
-    
-}
-
-.alojamiento-detail .details-column p, .details-column ul {
-    font-size: 1.2em; /* Tamaño de fuente del texto */
-    line-height: 1.6; /* Espaciado entre líneas */
-    margin: 10px 0;
 }
 
 .alojamiento-detail .details-column ul {
-    padding-left: 20px; /* Espaciado para la lista */
+    padding-left: 20px; /* Espacio a la izquierda para las viñetas */
+    list-style-type:circle;
 }
 
 .alojamiento-detail .details-column ul li {
+    font-size: 1.2em;
+    line-height: 1.6;
     margin-bottom: 10px;
 }
 
@@ -39,19 +35,81 @@
 .alojamiento-detail .map-column {
     width: 50%;
     padding: 20px;
+    z-index: 1;
 }
 
 .alojamiento-detail .map-container {
-    height: 100%; /* El mapa ocupa toda la columna */
+    height: 100%;
+    /* El mapa ocupa toda la columna */
     border: 2px solid var(--color-dark-green);
 }
 
 /* Estilo del título */
-.alojamiento-detail  .title {
-    color: var(--color-text); /* Color del texto */
+.alojamiento-detail .title {
+    color: var(--color-text);
+    /* Color del texto */
     font-size: 2em;
     letter-spacing: -3px;
     margin: 0px 0px 20px 0px;
     display: flex;
     align-items: center;
+}
+
+.carousel-container {
+    height: 70vh;
+    width: 100%;
+    padding: 50px 0 30px 0;
+    background: var(--color-claro);
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.servicios-section {
+    background-color: rgb(115, 108, 77,0.8);
+    margin: 30px;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.servicios-section h2{
+    color: var(--color-claro);
+    font-weight: 800;
+    font-size: 30px;
+}
+
+.servicios-categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px; /* Añadir espacio entre las columnas */
+}
+
+.servicio-category {
+    flex: 1 1 30%; /* Ajustar para que cada columna tenga un ancho del 30% */
+    min-width: 200px; /* Ancho mínimo para que las columnas no se colapsen */
+    box-sizing: border-box; /* Incluir padding en el ancho */
+}
+
+.servicio-category ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.servicio-category ul li {
+    font-size: 17px;
+    color: var(--color-claro); /* Cambiar el color para mejor contraste */
+    margin-bottom: 5px;
+    position: relative;
+    padding-left: 20px; /* Espacio para el icono */
+}
+
+.servicio-category ul li:before {
+    content: '↦';
+    color: var(--color-claro);
+    position: absolute;
+    left: 0;
+    top: 0;
 }

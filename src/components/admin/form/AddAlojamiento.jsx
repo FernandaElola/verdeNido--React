@@ -17,7 +17,7 @@ const AddAlojamiento = () => {
     cantidadDormitorios: '',
     cantidadBanios: '',
     estado: '',
-    tipoAlojamiento: ''
+    idTipoAlojamiento: '', // Nombre correcto del campo
   });
 
   useEffect(() => {
@@ -45,7 +45,7 @@ const AddAlojamiento = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(form)
+        body: JSON.stringify(form),
       });
 
       if (response.ok) {
@@ -59,10 +59,12 @@ const AddAlojamiento = () => {
           longitud: '',
           precioPorDia: '',
           cantidadDormitorios: '',
-          cantidadBaniosanos: '',
+          cantidadBanios: '',
           estado: '',
-          tipoAlojamiento: ''
+          idTipoAlojamiento: '', // Limpia el campo después de enviar
         });
+
+        navigate('/admin/alojamientos');
       } else {
         console.error('Error:', response.statusText);
       }
@@ -73,7 +75,7 @@ const AddAlojamiento = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setForm(prevForm => ({ ...prevForm, [name]: value }));
+    setForm((prevForm) => ({ ...prevForm, [name]: value }));
   };
 
   const handleCancel = () => {
@@ -110,7 +112,7 @@ const AddAlojamiento = () => {
             <div>
               <label htmlFor="latitud">Latitud</label>
               <input
-                type="texto"
+                type="text"
                 id="latitud"
                 name="latitud"
                 value={form.latitud}
@@ -120,7 +122,7 @@ const AddAlojamiento = () => {
             <div>
               <label htmlFor="longitud">Longitud</label>
               <input
-                type="texto"
+                type="text"
                 id="longitud"
                 name="longitud"
                 value={form.longitud}
@@ -168,15 +170,15 @@ const AddAlojamiento = () => {
               />
             </div>
             <div>
-              <label htmlFor="tipoAlojamiento">Tipo Alojamiento</label>
+              <label htmlFor="idTipoAlojamiento">Tipo Alojamiento</label>
               <select
-                id="tipoAlojamiento"
-                name="tipoAlojamiento"
-                value={form.tipoAlojamiento}
+                id="idTipoAlojamiento"
+                name="idTipoAlojamiento"
+                value={form.idTipoAlojamiento}
                 onChange={handleChange}
               >
                 <option value="">Seleccione un tipo de alojamiento</option>
-                {tipoAlojamientoOptions.map(option => (
+                {tipoAlojamientoOptions.map((option) => (
                   <option key={option.idTipoAlojamiento} value={option.idTipoAlojamiento}>
                     {option.Descripcion}
                   </option>
@@ -185,8 +187,10 @@ const AddAlojamiento = () => {
             </div>
             <div className="buttons">
               <button type="submit">Enviar</button>
-              <button className="cancel" type="button" onClick={handleCancel}>Cancelar</button>
-            </div>         
+              <button className="cancel" type="button" onClick={handleCancel}>
+                Cancelar
+              </button>
+            </div>
           </form>
         </div>
       </div>
