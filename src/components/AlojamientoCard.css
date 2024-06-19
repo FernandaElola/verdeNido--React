@@ -91,6 +91,17 @@
   margin-right: 10px;
 }
 
+/* Añadir estilos para el estado */
+
+.estado-disponible {
+  color: var(--color-dark-green);
+  font-weight: bold;
+}
+
+.estado-no-disponible {
+  color: var(--color-red);
+  font-weight: bold;
+}
 
 .more-details-button{
   border: 1px solid var(--color-dark-green);

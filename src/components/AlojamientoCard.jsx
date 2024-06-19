@@ -9,6 +9,11 @@ const AlojamientoCard = ({ alojamiento }) => {
     setShowDetails(!showDetails);
   };
 
+  // Función para obtener la clase de estado basada en la disponibilidad
+  const getEstadoClass = (estado) => {
+    return estado === 'Disponible' ? 'estado-disponible' : 'estado-no-disponible';
+  };
+
   return (
     <div className="alojamiento-card">
       <div className="image-container" onClick={toggleDetails}>
@@ -30,7 +35,7 @@ const AlojamientoCard = ({ alojamiento }) => {
       <h3>{alojamiento.Titulo}</h3>
       <ul className="alojamiento-details">
         <li>
-          <span className="detail-number">1</span> Ubicación: {alojamiento.Latitud}, {alojamiento.Longitud}
+          <span className="detail-number">1</span> Tipo de alojamiento: {alojamiento.tipoAlojamiento}
         </li>
         <li>
           <span className="detail-number">2</span> Precio por día: {alojamiento.PrecioPorDia}
@@ -42,7 +47,8 @@ const AlojamientoCard = ({ alojamiento }) => {
           <span className="detail-number">4</span> Cantidad de baños: {alojamiento.CantidadBanios}
         </li>
         <li>
-          <span className="detail-number">5</span> Estado: {alojamiento.Estado}
+          <span className="detail-number">5</span> 
+          Estado: <span className={getEstadoClass(alojamiento.Estado)}>{alojamiento.Estado}</span>
         </li>
       </ul>
       <Link to={`/details/${alojamiento.idAlojamiento}`}>
