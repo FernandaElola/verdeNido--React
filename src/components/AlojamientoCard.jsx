@@ -7,8 +7,8 @@ import { useInView } from 'react-intersection-observer';
 const AlojamientoCard = ({ alojamiento }) => {
   const [showDetails, setShowDetails] = useState(false);
   const { ref, inView } = useInView({
-    triggerOnce: true, // Animación ocurre solo una vez
-    threshold: 0, // Dispara la animación cuando el 20% del componente está visible
+    triggerOnce: false, // // Animación se reactiva cada vez que el componente entra en la vista
+    threshold: 0.3, // Dispara la animación cuando el 20% del componente está visible
   });
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const AlojamientoCard = ({ alojamiento }) => {
   };
 
   return (
-    <div ref={ref} className={`alojamiento-card ${inView ? 'visible' : ''}`}>
+    <div ref={ref} className={`alojamiento-card ${inView ? 'visible' : 'hidden'}`}>
       <div className="image-container" onClick={toggleDetails}>
         {/* Mostrar la primera imagen del alojamiento */}
         <img src={alojamiento.imagenes[0]?.RutaArchivo || './img/default.jpg'} alt={alojamiento.Titulo} />

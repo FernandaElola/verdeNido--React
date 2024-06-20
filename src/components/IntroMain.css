@@ -7,8 +7,13 @@
   /* Color de texto similar */
 
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  transform: translateY(15%);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.sobre-nosotros.hidden {
+  opacity: 0;
+  transform: translateY(-15%); /* Desaparece hacia arriba */
 }
 
 .sobre-nosotros.visible {

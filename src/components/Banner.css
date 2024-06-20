@@ -7,8 +7,8 @@
     /* Usa la variable para el color de fondo */
 
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    transform: translateY(10%);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 
