@@ -3,11 +3,9 @@ import { Nav } from './Nav';
 import { Footer } from './Footer';
 
 export const Contact = () => {
-    const date = new Date();
-
     return (
         <div className="contact">
-            <div className="banner">
+            <div className="banner-contact">
                 <img src="img/encabezado-contact-page.jpg" alt="Imagen del banner" className="banner-pic" />
             </div>
 

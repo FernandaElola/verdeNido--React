@@ -1,6 +1,9 @@
-
+// src/components/About.jsx
+import React from 'react';
 import './About.css';
 import { Nav } from './Nav';
+import { Footer } from './Footer';
+
 
 const About = () => {
     return (
@@ -70,6 +73,7 @@ const About = () => {
                     </div>
                 </div>
             </div>
+            <Footer /> {/* Agrega el componente Footer aquí */}
         </div>
     );
 };

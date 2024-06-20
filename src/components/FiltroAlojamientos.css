@@ -1,0 +1,68 @@
+/* FiltroAlojamientos.css */
+
+.filtro-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Para adaptarse a pantallas pequeñas */
+    border: 1px solid rgb(115, 108, 77);
+    border-radius: 50px;
+    background-color: rgb(115, 108, 77,0.8);
+
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+  
+  .filtro-container.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .filtro-input {
+    flex: 1;
+    padding: 10px;
+    margin-right: 10px;
+    border:  1px solid rgb(115, 108, 77);
+    border-radius: 50px;
+    background-color: var(--color-claro);
+  }
+
+  input::placeholder {
+    color: black;
+  }
+  
+  .filtro-select {
+    padding: 10px;
+    margin-right: 10px;
+    flex: 1;
+    border:  1px solid rgb(115, 108, 77);
+    border-radius: 50px;
+    background-color: var(--color-claro);
+  }
+
+  .filtro-button, .limpiar-button {
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .filtro-button {
+    background-color: #3f9646;
+    margin-right: 10px;
+    border-radius: 50px;
+  }
+  
+  .limpiar-button {
+    background-color: #d9534f;
+    border-radius: 50px;
+  }
+  
+  .filtro-button:hover, .limpiar-button:hover {
+    opacity: 0.8;
+  }
+  
