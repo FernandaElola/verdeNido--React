@@ -1,9 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './AlojamientoCard.css';
 import { Link } from 'react-router-dom';
+import { useInView } from 'react-intersection-observer';
+
 
 const AlojamientoCard = ({ alojamiento }) => {
   const [showDetails, setShowDetails] = useState(false);
+  const { ref, inView } = useInView({
+    triggerOnce: true, // Animación ocurre solo una vez
+    threshold: 0, // Dispara la animación cuando el 20% del componente está visible
+  });
+
+  useEffect(() => {
+    if (inView) {
+      // Agregar una clase para iniciar la animación cuando la tarjeta está visible
+      const card = ref.current;
+      if (card) {
+        card.classList.add('visible');
+      }
+    }
+  }, [inView, ref]);
 
   const toggleDetails = () => {
     setShowDetails(!showDetails);
@@ -15,7 +31,7 @@ const AlojamientoCard = ({ alojamiento }) => {
   };
 
   return (
-    <div className="alojamiento-card">
+    <div ref={ref} className={`alojamiento-card ${inView ? 'visible' : ''}`}>
       <div className="image-container" onClick={toggleDetails}>
         {/* Mostrar la primera imagen del alojamiento */}
         <img src={alojamiento.imagenes[0]?.RutaArchivo || './img/default.jpg'} alt={alojamiento.Titulo} />
@@ -23,7 +39,7 @@ const AlojamientoCard = ({ alojamiento }) => {
           <div className="details-overlay">
             <div className="details-container">
               <ul className="alojamiento-details">
-                {alojamiento.Descripcion}
+                <li>{alojamiento.Descripcion}</li>
               </ul>
             </div>
           </div>

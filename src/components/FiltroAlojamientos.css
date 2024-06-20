@@ -10,8 +10,17 @@
     border: 1px solid rgb(115, 108, 77);
     border-radius: 50px;
     background-color: rgb(115, 108, 77,0.8);
+
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
   }
   
+  .filtro-container.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   .filtro-input {
     flex: 1;
     padding: 10px;

@@ -1,6 +1,8 @@
 // FiltroAlojamientos.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './FiltroAlojamientos.css';
+import { useInView } from 'react-intersection-observer';
+
 
 const FiltroAlojamientos = ({ onFiltrar }) => {
   const [nombre, setNombre] = useState('');
@@ -9,6 +11,20 @@ const FiltroAlojamientos = ({ onFiltrar }) => {
   const [rangoPrecios, setRangoPrecios] = useState('');
   const [dormitorios, setDormitorios] = useState('');
   const [banios, setBanios] = useState('');
+  const { ref, inView } = useInView({
+    triggerOnce: true, // Animación ocurre solo una vez
+    threshold: 0.2, // Dispara la animación cuando el 20% del componente está visible
+  });
+
+  useEffect(() => {
+    if (inView) {
+      // Agregar una clase para iniciar la animación cuando el filtro está visible
+      const filtro = ref.current;
+      if (filtro) {
+        filtro.classList.add('visible');
+      }
+    }
+  }, [inView, ref]);
 
   const handleFiltrar = () => {
     const filtros = {
@@ -33,7 +49,7 @@ const FiltroAlojamientos = ({ onFiltrar }) => {
   };
 
   return (
-    <div className="filtro-container">
+    <div ref={ref} className={`filtro-container ${inView ? 'visible' : ''}`}>
       <input
         type="text"
         placeholder="Buscar por nombre"
@@ -82,6 +98,8 @@ const FiltroAlojamientos = ({ onFiltrar }) => {
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
       </select>
       <select
         value={banios}
@@ -92,6 +110,8 @@ const FiltroAlojamientos = ({ onFiltrar }) => {
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
       </select>
       <button onClick={handleFiltrar} className="filtro-button">
         Buscar

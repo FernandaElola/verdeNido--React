@@ -2,7 +2,7 @@
 
 .contact {
     background-color: var(--color-claro);
-    .banner .banner-pic {
+    .banner-contact .banner-pic {
         width: 100%;
         height: 250px;
         object-fit: cover;
