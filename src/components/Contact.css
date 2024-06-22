@@ -2,94 +2,177 @@
 
 .contact {
     background-color: var(--color-claro);
-    .banner-contact .banner-pic {
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-        object-position:bottom;
-    }
+}
+
+/* Estilo del banner */
+.banner-contact .banner-pic {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    object-position: bottom;
+}
+
+.container {
+    max-width: 60%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Encabezado */
+.container .encabezado {
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.container p {
+    margin: 0 0 20px 0;
+    font-size: 18px;
+}
+
+h2, h3 {
+    text-align: center;
+    margin: 20px 0 10px 0;
+    color: var(--color-red);
+}
+
+h3 {
+    margin: 50px 0 6px 0;
+}
+
+.apartado {
+    margin: 40px 0 20px 0;
+    font-size: 20px;
+}
+
+form {
+    margin-top: 40px;
+}
+
+label {
+    display: block;
+    margin: 20px 0 5px;
+    color: var(--color-red);
+    font-weight: bold;
+    font-size: 16px;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 16px;
+    border: none;
+    border-bottom: 1px solid black;
+    background-color: var(--color-claro);
+    font-size: 16px;
+}
+
+.detalles {
+    width: 100%;
+    padding: 12px;
+    margin: 20px 0 16px;
+    border: none;
+    border-bottom: 1px solid black;
+    background-color: var(--color-claro);
+    font-size: 16px;
+}
+
+input[type="submit"] {
+    background-color: var(--color-red);
+    color: #f2ede4;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+input[type="submit"]:hover {
+    background-color: var(--color-dark-green);
+}
+
+/* Flexbox para disposición */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.half-column {
+    flex: 1;
+    min-width: 280px; /* Ancho mínimo de las columnas */
+    box-sizing: border-box;
+    padding-right: 20px;
+}
+
+.full-column {
+    width: 100%;
+}
+
+/* Botón de enviar */
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.button input {
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* Contenedor de resultados */
+.result {
+    margin-top: 40px;
+    padding: 20px;
+    border: 1px solid var(--color-red);
+    border-radius: 10px;
+    background-color: var(--color-claro);
+}
+
+.result h3 {
+    text-align: center;
+    color: var(--color-red);
+    margin-bottom: 20px;
+}
+
+.result ul {
+    list-style-type: none;
+    padding: 0;
+    font-size: 16px;
+}
+
+.result ul li {
+    margin-bottom: 10px;
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
     .container {
-        max-width: 60%;
-        margin: 0 auto;
-        padding: 20px;
+        max-width: 80%;
     }
-    .container .encabezado {
-        text-align: center;
+}
+
+@media (max-width: 768px) {
+    .container {
+        max-width: 100%;
+        padding: 20px 40px 20px 40px;
     }
-    .container p {
-        margin: 0 0 20px 0;
-        font-size: 18px;
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 20px 40px 20px 40px;
     }
-    h1, h2 {
-        text-align: center;
-        margin: 20px 0 10px 0;
-        color: var(--color-red);
+
+    .encabezado, .container p {
+        font-size: 0.9rem;
     }
-    h3 {
-        margin: 50px 0 6px 0;
-        color: var(--color-red);
-    }
-    .apartado {
-        margin: 40px 0 40px 0;
-        font-size: 20px;
-    }
-    form {
-        margin-top: 40px;
-    }
-    label {
-        display: block;
-        margin: 20px 0 5px;
-        color: var(--color-red);
-        font-weight: bold;
-        font-size: 20px;
-    }
-    input, select {
-        width: 100%;
-        padding: 12px;
-        margin-bottom: 16px;
-        border: none;
-        border-bottom: 1px solid black;
-        background-color: var(--color-claro);
-    }
-    .detalles {
-        width: 100%;
-        padding: 12px;
-        margin: 20px 0 16px;
-        border: none;
-        border-bottom: 1px solid black;
-        background-color: var(--color-claro);
-    }
-    input[type="submit"] {
-        background-color: var(--color-red);
-        color: #f2ede4;
-        cursor: pointer;
-    }
-    input[type="submit"]:hover {
-        background-color: var(--color-dark-green);
-    }    
-    .row {
-        display: flex;
-        justify-content: space-between;
-    }    
-    .half-column {
-        width: 48%; 
-    }    
-    .half-column:not(:first-child) {
-        margin-left: 4%; 
-    }    
-    .button {
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        margin-top: 76px;
-    }
+
     .button input {
-        width: 14%; 
-        height: 50px;
-        text-align: center;
-        font-weight: bold;
-        border: none;
-        border-radius: 10px;
-        margin-bottom: 80px;
-    }  
+        width: 100%;
+    }
+
 }

@@ -2,15 +2,14 @@
 
 .banner {
     position: relative;
-    /* Permite que el título se superponga */
     background-color: var(--color-claro);
-    /* Usa la variable para el color de fondo */
-
     opacity: 0;
     transform: translateY(10%);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    overflow: hidden; /* Asegura que el contenido se recorte */
+    height: 100vh; /* Hace que el banner ocupe siempre toda la altura del viewport */
+    z-index: 50;
 }
-
 
 .banner.visible {
     opacity: 1;
@@ -19,63 +18,79 @@
 
 .banner .container-banner {
     position: relative;
-    /* Necesario para que el título se posicione correctamente */
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center; /* Centra verticalmente en el contenedor */
+    height: 100%;
+    width: 100%;
+    overflow: hidden; /* Asegura que el contenido se recorte */
 }
 
 .banner .title {
     position: absolute;
-    /* Permite que el título se superponga al banner */
     top: 50%;
-    /* Coloca el título en el centro vertical del banner */
-    transform: translateY(-55%);
-    /* Ajusta la posición para centrarlo exactamente */
-    width: 100%;
-    z-index: 10;
-    /* Para asegurar que esté al frente */
+    transform: translateY(-50%);
+    max-width: 80%; /* Establece un tamaño máximo para el título */
+    min-width: 650px; /* Establece un tamaño mínimo para el título */
+    text-align: center; /* Centra el texto */
+    z-index: 50;
+    color: #fff; /* Color del texto para asegurarse de que sea visible */
 }
 
 .banner .banner-img {
     width: 100%;
-    /* Imagen que ocupa todo el ancho */
-    max-height: 1920px;
-    /* Limita la altura de la imagen */
-    object-fit: cover;
+    height: 100%;
+    object-fit: cover; /* La imagen se recorta para cubrir el contenedor */
+    object-position: center; /* La imagen se centra en el contenedor */
+    max-height: 100vh; /* Limita la altura máxima al viewport */
     border-bottom-left-radius: 40%;
     border-bottom-right-radius: 40%;
-    height: 100vh;
-    /* Hace que el banner ocupe toda la altura del viewport */
 }
 
-/* Botón Flotante con animación de rotación */
-@keyframes rotate {
-    from {
-        transform: rotate(0deg);
-        /* Comienza sin rotación */
+/* Media Queries para responsividad */
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 600px) {
+    .banner .title {
+        font-size: 1.2em; /* Ajusta el tamaño del texto */
+        top: 50%;
+        transform: translateY(-50%);
+        width: 90%;
     }
 
-    to {
-        transform: rotate(360deg);
-        /* Gira 360 grados */
+    .banner .banner-img {
+        border-bottom-left-radius: 25%;
+        border-bottom-right-radius: 25%;
     }
 }
 
-.floating-button {
-    position: fixed;
-    /* Hace que el botón sea flotante */
-    z-index: 99;
-    bottom: 0px;
-    /* Posiciona el botón a 0px del borde inferior */
-    right: 0px;
-    /* Posiciona el botón a 0px del borde derecho */
-    cursor: pointer;
-    animation: rotate 10s linear infinite;
-    /* Aplica la animación de rotación */
+/* Estilos para pantallas medianas */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .banner .title {
+        font-size: 1.5em; /* Ajusta el tamaño del texto */
+        top: 50%;
+        transform: translateY(-50%);
+        width: 85%;
+    }
+
+    .banner .banner-img {
+        border-bottom-left-radius: 30%;
+        border-bottom-right-radius: 30%;
+    }
 }
 
-.floating-button img {
-    width: 115px;
-    /* Tamaño de la imagen del botón */
+/* Estilos para pantallas grandes */
+@media (min-width: 1025px) {
+    .banner .title {
+        font-size: 2em; /* Ajusta el tamaño del texto */
+        top: 50%;
+        transform: translateY(-50%);
+        width: 80%;
+    }
+
+    .banner .banner-img {
+        border-bottom-left-radius: 35%;
+        border-bottom-right-radius: 35%;
+    }
 }

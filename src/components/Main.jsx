@@ -14,7 +14,6 @@ export const Main = () => {
         <>   
             <main>
                 <Banner />
-                <FloatingButton />
                 <Nav />
                 <IntroMain />
                 <AlojamientoList />

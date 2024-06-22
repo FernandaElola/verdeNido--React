@@ -1,7 +1,7 @@
 .sobre-nosotros {
   background-color: var(--color-claro);
   /* Color de fondo similar */
-  padding-bottom: 30px;
+  padding:30px;
   text-align: center;
   color: #8B7765;
   /* Color de texto similar */
@@ -39,4 +39,24 @@
   line-height: 1.6;
   margin-bottom: 20px;
   font-weight: 300;
+}
+
+@media (max-width: 800px){
+  .sobre-nosotros{
+    padding: 20px 50px 20px 50px;
+  }
+
+  .sobre-nosotros h1 {
+    font-size: 2.5em;
+    line-height: 1.4;
+    margin-bottom: 20px;
+    font-weight: 400;
+  }
+  
+  .sobre-nosotros p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-weight: 300;
+  }
 }

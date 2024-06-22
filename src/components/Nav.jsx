@@ -1,47 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import MenuDesplegable from './MenuDesplegable';
 import './Nav.css';
 
 export const Nav = () => {
-  const [prevScrollPos, setPrevScrollPos] = useState(window.scrollY);
-  const [fixedHeader, setFixedHeader] = useState(true); // Inicialmente no fijo
+  const [showMenu, setShowMenu] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollPos = window.scrollY;
-      const visible = prevScrollPos > currentScrollPos;
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
-      setPrevScrollPos(currentScrollPos);
-
-      if (visible) {
-        setFixedHeader(true); // Si el usuario se desplaza hacia abajo, se mantiene el encabezado fijo
-      } else {
-        setFixedHeader(currentScrollPos <= 0); // Si el usuario se desplaza hacia arriba y está en la parte superior, se mantiene fijo
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [prevScrollPos]);
-
-  const handleClick = () => {
-    window.scrollTo(0, 0); // Hace scroll hacia arriba al hacer clic en un enlace
-  };
+  const toggleMenu = () => setShowMenu(!showMenu);
 
   return (
-    <nav className={`navbar ${fixedHeader ? 'fixed' : ''}`}>
-      <ul className="nav-left">
-        <li><Link to="/about" onClick={handleClick}>NOSOTROS</Link></li>
-        <li><Link to="/contact" onClick={handleClick}>CONTACTO</Link></li>
-      </ul>
-      <Link className="logo" to="/" onClick={handleClick}><img src="/img/LOGO FOTO.png" alt="Logo" /></Link>
-      <ul className="nav-right">
-        <li><Link to="/" onClick={handleClick}>ALOJAMIENTOS</Link></li>
-        <li><a href="/admin">ADMIN</a></li>
-      </ul>
+    <nav className="navbar">
+      {windowWidth > 800 ? (
+        <>
+          <ul className="nav-left">
+            <li><Link to="/about">NOSOTROS</Link></li>
+            <li><Link to="/contact">CONTACTO</Link></li>
+          </ul>
+          <Link className="logo" to="/"><img src="/img/LOGO FOTO.png" alt="Logo" /></Link>
+          <ul className="nav-right">
+            <li><Link to="/">ALOJAMIENTOS</Link></li>
+            <li><a href="/admin">ADMIN</a></li>
+          </ul>
+        </>
+      ) : (
+        <div className="logo menu-logo" onClick={toggleMenu}>
+          <img src="/img/LOGO FOTO MENU.png" alt="Menu Logo" />
+        </div>
+      )}
+      {showMenu && <MenuDesplegable closeMenu={toggleMenu} />}
     </nav>
   );
 };

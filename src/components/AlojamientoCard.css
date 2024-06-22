@@ -1,5 +1,6 @@
 .alojamiento-card {
-  width: 300px;
+  width: 100%;
+  max-width: 400px;
   text-align: center;
   background-color: var(--color-claro);
   padding: 10px;
@@ -133,4 +134,10 @@
 .more-details-button:hover{
   background-color: rgb(115, 108, 77,0.2);
   transition: 0.5s;
+}
+
+@media (min-width: 800px) {
+  .alojamiento-card {
+    width: 300px; /* Vuelve al ancho fijo para pantallas grandes */
+  }
 }
