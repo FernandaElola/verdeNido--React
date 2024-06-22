@@ -8,7 +8,7 @@ const AlojamientoCard = ({ alojamiento }) => {
   const [showDetails, setShowDetails] = useState(false);
   const { ref, inView } = useInView({
     triggerOnce: false, // // Animación se reactiva cada vez que el componente entra en la vista
-    threshold: 0.2, // Dispara la animación cuando el 20% del componente está visible
+    threshold: 0.1, // Dispara la animación cuando el 20% del componente está visible
   });
 
   useEffect(() => {

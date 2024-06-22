@@ -1,19 +1,29 @@
-:root {
-    --color-bg: #F2EDE4; /* Color de fondo general */
-    --color-text: #736C4D; /* Color del texto en la barra de navegación */
-}
+@import url('../Variables.css');
 
+/* Estilos generales */
 .about {
     font-family: "Cormorant Garamond", serif;
     font-weight: 300;
     font-style: normal;
-    background-color: var(--color-bg); /* Usa la variable para el color de fondo */
-    margin: 0px
+    background-color: var(--color-claro); /* Usa la variable para el color de fondo */
+    margin: 0px;
 }
 
-/* TÍTULO */
-.space {
-    height: 50px; /* Espacio entre secciones */
+/* Animaciones generales para las secciones */
+.section1, .section2, .section3 {
+    opacity: 0;
+    transform: translateY(20%);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.section1.hidden, .section2.hidden, .section3.hidden {
+    opacity: 0;
+    transform: translateY(20%);
+}
+
+.section1.visible, .section2.visible, .section3.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .section-name {
@@ -23,13 +33,15 @@
     margin-right: 50px;
     gap: 5px;
     margin-bottom: -50px;
-    color: var(--color-text);
+    color: var(--color-dark-green);
 }
 
-.section-name h3, .section-name i {
-    font-family:'Courier New', Courier, monospace;
+.section-name h3,
+.section-name i {
+    font-family: 'Courier New', Courier, monospace;
     font-size: 18px;
     font-weight: 300;
+    color: var(--color-dark-green);
 }
 
 .section-name i {
@@ -37,7 +49,7 @@
 }
 
 .title {
-    color: var(--color-text); /* Color del texto */
+    color: var(--color-dark-green); /* Color del texto */
     font-size: 3.5em;
     letter-spacing: -3px;
     margin: 0px 50px 0px 50px;
@@ -62,7 +74,7 @@
 
 .line-decorative {
     height: 1px; /* Grosor de la línea */
-    background-color: var(--color-text); /* Color de fondo */
+    background-color: var(--color-dark-green); /* Color de fondo */
     width: 150px; /* Longitud de la línea decorativa */
     border-radius: 5px; /* Borde redondeado */
     margin-right: 10px; /* Espacio entre la línea y el texto */
@@ -73,7 +85,6 @@
 .section1 {
     display: flex;
     justify-content: flex-end;
-    color: var(--color-text);
     margin: 0px 50px 0px 50px;
 }
 
@@ -85,6 +96,8 @@
     font-weight: 400;
     font-size: 2em;
     margin: 0;
+    color: var(--color-dark-green);
+    padding-bottom: 20px;
 }
 
 /* SECCIÓN 2 */
@@ -92,7 +105,6 @@
 .section2 {
     display: flex; /* Usa flexbox para alinear columnas */
     gap: 20px; /* Espacio entre columnas */
-    color: var(--color-text);
     margin: 0px 50px 0px 50px;
 }
 
@@ -104,7 +116,7 @@
     width: 85%;
     height: 50%;
     object-fit: cover; /* Asegura que la imagen cubra todo el espacio */
-    border: 3px solid var(--color-text);
+    border: 3px solid var(--color-dark-green);
 }
 
 .section2 .column-der {
@@ -123,6 +135,7 @@
 .section2 .text-container h2 {
     font-weight: 500;
     font-size: 25px;
+    color: var(--color-dark-green);
 }
 
 .section2 .image-container {
@@ -133,7 +146,7 @@
     width: 100%;
     height: 50%;
     object-fit: cover; /* Asegura que la imagen cubra todo el espacio */
-    border: 3px solid var(--color-text);
+    border: 3px solid var(--color-dark-green);
 }
 
 /* SECCIÓN 3 */
@@ -143,7 +156,7 @@
     flex-direction: column;
     width: 100%;
     margin-top: -100px;
-    padding-top: 100px;
+    padding-top: 0px;
     padding-bottom: 100px;
 }
 
@@ -158,13 +171,13 @@
 .section3 .text {
     width: 60%;
     justify-content: flex-end;
-    color: var(--color-text);
 }
 
 .section3 h2 {
     font-size: 50px;
     font-weight: 400;
     margin: 0;
+    color: var(--color-dark-green);
 }
 
 .section-name2 {
@@ -173,13 +186,14 @@
     justify-content: flex-start;
     height: 50px;
     gap: 5px;
-    color: var(--color-text);
 }
 
-.section-name2 h3, .section-name2 i {
-    font-family:'Courier New', Courier, monospace;
+.section-name2 h3,
+.section-name2 i {
+    font-family: 'Courier New', Courier, monospace;
     font-size: 18px;
     font-weight: 300;
+    color: var(--color-dark-green);
 }
 
 .section-name2 i {
@@ -204,21 +218,21 @@
     flex-direction: column; /* Alinea los elementos verticalmente */
     align-items: flex-end;
     justify-content: space-between;
-    padding-right: 50px
+    padding-right: 50px;
 }
 
 .section3 .about-img3 {
     width: 100%;
     height: 95vh;
     object-fit: cover;
-    border: 3px solid var(--color-text);
+    border: 3px solid var(--color-dark-green);
 }
 
 .section3 .about-img4 {
     width: 100%;
     height: 120%;
     object-fit: cover;
-    border: 3px solid var(--color-text);
+    border: 3px solid var(--color-dark-green);
 }
 
 .section3 .column-der .text-container {
@@ -229,10 +243,101 @@
     width: 50%;
     font-size: 23px;
     font-weight: 500;
-    color: var(--color-text);
+    color: var(--color-dark-green);
 }
 
 .section3 .column-der .image-container {
     padding-bottom: 50px;
     width: 50%;
+}
+
+/* Media queries */
+
+@media (max-width: 860px) {
+    .section1 .column {
+        width: 100%; /* Cambia a ocupar todo el ancho en dispositivos pequeños */
+    }
+
+    .section2 {
+        flex-direction: column; /* Cambia a columna en dispositivos pequeños */
+    }
+
+    .section2 .column-der {
+        flex: 1; /* Ocupa todo el espacio disponible en dispositivos pequeños */
+    }
+
+    .section2 .about-img1,
+    .section2 .about-img2 {
+        width: 100%;
+        height: auto; /* Ajusta la altura automáticamente */
+        margin-bottom: 20px; /* Espacio entre las imágenes y el texto */
+    }
+    .section3{
+        justify-content: center;
+        align-items: center;
+        padding-top: 100px;
+    }
+}
+
+@media (max-width: 600px) {
+    .title {
+        font-size: 2.5em; /* Reduce el tamaño del título en dispositivos muy pequeños */
+    }
+
+    .section2 .column-der .text-container h2{
+        margin:0 0 20px;
+    }
+    .section3{
+        justify-content: center;
+        align-items: center;
+        padding-top: 100px;
+    }
+    .section3 .text-container{
+        width: 100%;
+        flex-direction: column; /* Cambia a columna en dispositivos pequeños */
+        padding: 0px 0px;
+        align-items: center;
+    }
+
+    .section3 .text h2{
+        font-size: 2rem;
+    }
+
+    .section3 .img-container {
+        flex-direction: column; /* Cambia a columna en dispositivos pequeños */
+        gap: 20px; /* Espacio entre columnas */
+        padding-top: 20px;
+    }
+    
+    .section3 .img-container .column-iz {
+        padding-left: 0;
+        margin: 20px;
+    }
+    .section3 .about-img3 {
+        height: 60vh;
+    }
+    .section3 .column-der{
+        align-items: center;
+        padding-right: 0px;
+    }
+
+    .section3 .column-der .image-container{
+        padding-bottom: 10px;
+    }
+
+    .section3 .column-der{
+        align-items: center;
+    }
+    .section3 .column-der .text-container{
+        padding-top: 10px;
+    }
+
+    .section3 .column-der .text-container h2 {
+        font-size: 20px; /* Reduce el tamaño del texto */
+        width: 80%;
+    }
+
+    .line-nido h1{
+        padding-left: 10px;
+    }
 }

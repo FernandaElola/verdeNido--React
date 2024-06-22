@@ -1,54 +1,55 @@
-@import url('../components/Variables.css');
+@import url('../Variables.css');
 
 .contact {
     background-color: var(--color-claro);
 }
 
 /* Estilo del banner */
-.banner-contact .banner-pic {
+.contact .banner-contact .banner-pic {
     width: 100%;
     height: 250px;
     object-fit: cover;
     object-position: bottom;
 }
 
-.container {
+.contact .container {
     max-width: 60%;
     margin: 0 auto;
     padding: 20px;
 }
 
 /* Encabezado */
-.container .encabezado {
+.contact .container .encabezado {
     text-align: center;
     font-size: 1.2rem;
 }
 
-.container p {
+.contact .container p {
     margin: 0 0 20px 0;
     font-size: 18px;
 }
 
-h2, h3 {
+.contact h2,
+h3 {
     text-align: center;
     margin: 20px 0 10px 0;
     color: var(--color-red);
 }
 
-h3 {
+.contact h3 {
     margin: 50px 0 6px 0;
 }
 
-.apartado {
+.contact .apartado {
     margin: 40px 0 20px 0;
     font-size: 20px;
 }
 
-form {
+.contact form {
     margin-top: 40px;
 }
 
-label {
+.contact label {
     display: block;
     margin: 20px 0 5px;
     color: var(--color-red);
@@ -56,7 +57,8 @@ label {
     font-size: 16px;
 }
 
-input, select {
+.contact input,
+select {
     width: 100%;
     padding: 12px;
     margin-bottom: 16px;
@@ -66,7 +68,7 @@ input, select {
     font-size: 16px;
 }
 
-.detalles {
+.contact .detalles {
     width: 100%;
     padding: 12px;
     margin: 20px 0 16px;
@@ -76,44 +78,45 @@ input, select {
     font-size: 16px;
 }
 
-input[type="submit"] {
+.contact input[type="submit"] {
     background-color: var(--color-red);
     color: #f2ede4;
     cursor: pointer;
     font-size: 16px;
 }
 
-input[type="submit"]:hover {
+.contact input[type="submit"]:hover {
     background-color: var(--color-dark-green);
 }
 
 /* Flexbox para disposición */
-.row {
+.contact .row {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
 }
 
-.half-column {
+.contact .half-column {
     flex: 1;
-    min-width: 280px; /* Ancho mínimo de las columnas */
+    min-width: 280px;
+    /* Ancho mínimo de las columnas */
     box-sizing: border-box;
     padding-right: 20px;
 }
 
-.full-column {
+.contact .full-column {
     width: 100%;
 }
 
 /* Botón de enviar */
-.button {
+.contact .button {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 20px;
 }
 
-.button input {
+.contact .button input {
     width: 200px;
     height: 50px;
     text-align: center;
@@ -124,7 +127,7 @@ input[type="submit"]:hover {
 }
 
 /* Contenedor de resultados */
-.result {
+.contact .result {
     margin-top: 40px;
     padding: 20px;
     border: 1px solid var(--color-red);
@@ -132,46 +135,47 @@ input[type="submit"]:hover {
     background-color: var(--color-claro);
 }
 
-.result h3 {
+.contact .result h3 {
     text-align: center;
     color: var(--color-red);
     margin-bottom: 20px;
 }
 
-.result ul {
+.contact .result ul {
     list-style-type: none;
     padding: 0;
     font-size: 16px;
 }
 
-.result ul li {
+.contact .result ul li {
     margin-bottom: 10px;
 }
 
 /* Media Queries */
 @media (max-width: 1200px) {
-    .container {
+    .contact .container {
         max-width: 80%;
     }
 }
 
 @media (max-width: 768px) {
-    .container {
+    .contact .container {
         max-width: 100%;
         padding: 20px 40px 20px 40px;
     }
 }
 
 @media (max-width: 480px) {
-    .container {
+    .contact .container {
         padding: 20px 40px 20px 40px;
     }
 
-    .encabezado, .container p {
+    .contact .encabezado,
+    .container p {
         font-size: 0.9rem;
     }
 
-    .button input {
+    .contact .button input {
         width: 100%;
     }
 

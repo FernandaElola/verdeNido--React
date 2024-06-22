@@ -1,13 +1,13 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Main } from './components/Main';
-import { Contact } from './components/Contact';
-import About from './components/About';
+import { Main } from './components/Home/Main';
+import { Contact } from './components/Home/Contact';
+import About from './components/Home/About';
 import Alojamientos from './components/admin/Alojamientos';
 import AddAlojamiento from './components/admin/form/AddAlojamiento';
 import AddTipoAlojamiento from './components/admin/form/AddTipoAlojamiento';
 import TipoDeAlojamiento from './components/admin/TipoDeAlojamiento';
-import AlojamientoDetail from './components/AlojamientoDetail';
+import AlojamientoDetail from './components/Home/Alojamientos/AlojamientoDetail';
 
 function App() {
   return (

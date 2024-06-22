@@ -5,7 +5,7 @@ import { useInView } from 'react-intersection-observer';
 const IntroMain = () => {
   const { ref, inView } = useInView({
     triggerOnce: false, // Mantiene la animación reactivable
-    threshold: 0.2, // Se activa cuando el 20% del elemento es visible
+    threshold: 0.1, // Se activa cuando el 20% del elemento es visible
   });
 
   return (

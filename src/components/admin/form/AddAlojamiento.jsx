@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Nav from '../../Nav';
+
 import './AddTipoAlojamiento.css';
 import { useNavigate } from 'react-router-dom';
 import { fetchAlojamientos, fetchTiposAlojamiento } from '../../../utils/api';
+import Nav from '../../Home/Nav';
 
 const AddAlojamiento = () => {
   const navigate = useNavigate();

@@ -14,7 +14,7 @@ const FiltroAlojamientos = ({ onFiltrar }) => {
 
   const { ref, inView } = useInView({
     triggerOnce: false,
-    threshold: 0.2,
+    threshold: 0,
   });
 
   useEffect(() => {
@@ -102,6 +102,9 @@ const FiltroAlojamientos = ({ onFiltrar }) => {
           <option value="0-50">0 - 50</option>
           <option value="50-100">50 - 100</option>
           <option value="100-200">100 - 200</option>
+          <option value="200-300">200 - 300</option>
+          <option value="300-400">300 - 400</option>
+          <option value="400-500">400 - 500</option>
         </select>
       </div>
       <div className="filtro-item">

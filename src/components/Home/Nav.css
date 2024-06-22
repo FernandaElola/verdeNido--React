@@ -1,0 +1,71 @@
+@import url('../Variables.css');
+
+.navbar {
+    background-color: rgba(242, 237, 228, 0.8);
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 99;
+}
+
+.navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+    flex: 1;
+    justify-content: space-around;
+}
+
+.navbar a {
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    color: var(--color-dark-green);
+    font-weight: lighter;
+    font-size: 0.8em;
+    padding: 10px 50px;
+    position: relative;
+    transition: all 0.3s;
+    display: block;
+}
+
+.navbar a:not(.logo)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--color-dark-green);
+    transition: width 0.8s;
+}
+
+.navbar a:hover::after {
+    width: 100%;
+}
+
+.navbar .logo {
+    cursor: pointer;
+}
+
+.logo img {
+    height: 70px;
+}
+
+.menu-logo {
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    z-index: 1000;
+}
+
+/* Efecto de rebote en el hover del logo */
+.navbar .logo:hover img {
+    transform: scale(1.15); /* Ajusta el valor de escala según tu preferencia */
+    transition: transform 0.3s ease-out; /* Agrega una transición suave */
+}
+

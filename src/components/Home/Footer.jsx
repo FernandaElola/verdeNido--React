@@ -1,13 +1,20 @@
-import './Footer.css';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import { useInView } from 'react-intersection-observer';
+import './Footer.css';
 
 export const Footer = () => {
+  const { ref, inView } = useInView({
+    triggerOnce: false,
+    threshold: 0,
+  });
+
   const handleClick = () => {
     window.scrollTo(0, 0); // Hace scroll hacia arriba al hacer clic en el enlace
   };
 
   return (
-    <footer>
+    <footer ref={ref} className={`footer ${inView ? 'footer-visible' : 'footer-hidden'}`}>
       <div className="footer-container">
         <div className="footer-left">
           <Link to="/" onClick={handleClick}>
@@ -35,7 +42,6 @@ export const Footer = () => {
         </div>
       </div>
     </footer>
-
   );
 };
 

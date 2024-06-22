@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchAlojamientos, fetchImagenes, fetchAlojamientoServicios, fetchServicios, fetchTiposAlojamiento } from '../utils/api.js';
-import MapView from './MapView';
+import { fetchAlojamientos, fetchImagenes, fetchAlojamientoServicios, fetchServicios, fetchTiposAlojamiento } from '../../../utils/api.js';
+import MapView from './MapView.js';
 import './AlojamientoDetail.css';
-import Nav from './Nav.jsx';
-import ImageCarousel from './ImageCarousel'; // Importa el nuevo componente de carrusel
+import Nav from '../Nav.jsx';
+import ImageCarousel from './ImageCarousel.js'; // Importa el nuevo componente de carrusel
+
 
 const AlojamientoDetail = () => {
     const { id } = useParams();
