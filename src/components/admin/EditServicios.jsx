@@ -83,7 +83,7 @@ const EditServicios = () => {
         <div className="main-content">
           <div className="header">
             <h2>Servicios para {alojamiento.Titulo}</h2>
-            <Link className="add-button" to="/admin/alojamientos">← Volver</Link>
+            <Link className="back-button" to="/admin/alojamientos">← Volver</Link>
           </div>
           <table>
             <thead>
@@ -117,7 +117,7 @@ const EditServicios = () => {
                       </option>
                     ))}
                   </select>
-                  <button className="add" onClick={handleAddServicio}>Agregar Servicio</button>
+                  <button className="addButton" onClick={handleAddServicio}>Agregar Servicio</button>
                 </td>
               </tr>
             </tbody>
