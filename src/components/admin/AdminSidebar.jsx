@@ -1,5 +1,5 @@
 import React from 'react';
-import './Alojamiento.css';
+import './Admin.css';
 import { Link } from 'react-router-dom';
 
 const AdminSidebar = () => {
@@ -9,6 +9,7 @@ const AdminSidebar = () => {
       <ul>
         <li><Link to="/admin/alojamientos">Alojamientos</Link></li>
         <li><Link to="/admin/tipo-alojamiento">Tipo de Alojamientos</Link></li>
+        <li><Link to="/admin/servicios">Servicios</Link></li>
       </ul>
     </div>
   );

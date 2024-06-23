@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Nav from '../../Nav';
-import './AddTipoAlojamiento.css';
+import './Form.css';
 import { useNavigate } from 'react-router-dom';
 import { fetchAlojamientos, fetchTiposAlojamiento } from '../../../utils/api';
 
@@ -17,7 +17,7 @@ const AddAlojamiento = () => {
     cantidadDormitorios: '',
     cantidadBanios: '',
     estado: '',
-    idTipoAlojamiento: '', // Nombre correcto del campo
+    TipoAlojamiento: '', // Nombre correcto del campo
   });
 
   useEffect(() => {
@@ -61,7 +61,7 @@ const AddAlojamiento = () => {
           cantidadDormitorios: '',
           cantidadBanios: '',
           estado: '',
-          idTipoAlojamiento: '', // Limpia el campo después de enviar
+          TipoAlojamiento: '',
         });
 
         navigate('/admin/alojamientos');
@@ -158,23 +158,26 @@ const AddAlojamiento = () => {
                 value={form.cantidadBanios}
                 onChange={handleChange}
               />
-            </div>
+            </div>           
             <div>
               <label htmlFor="estado">Estado</label>
-              <input
-                type="text"
-                id="estado"
+              <select
+                id="number"
                 name="estado"
                 value={form.estado}
                 onChange={handleChange}
-              />
+              >
+                <option value="">Seleccione un estado</option>
+                <option value="1">Reservado</option>
+                <option value="2">Disponible</option>
+              </select>
             </div>
             <div>
-              <label htmlFor="idTipoAlojamiento">Tipo Alojamiento</label>
+              <label htmlFor="TipoAlojamiento">Tipo Alojamiento</label>
               <select
-                id="idTipoAlojamiento"
-                name="idTipoAlojamiento"
-                value={form.idTipoAlojamiento}
+                id="TipoAlojamiento"
+                name="TipoAlojamiento"
+                value={form.TipoAlojamiento}
                 onChange={handleChange}
               >
                 <option value="">Seleccione un tipo de alojamiento</option>
