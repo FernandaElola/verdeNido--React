@@ -23,6 +23,13 @@
   padding: 20px;
 }
 
+.form-container .cancel {
+  background-color: #FF0000;
+}
+
+.form-container .cancel:hover {
+  background-color: #994439;
+}
 
 .form-container input {
   width: 300px;
@@ -43,6 +50,7 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
   text-decoration: none;
+  margin: 5px;
 }
 
 .form-container button:hover {

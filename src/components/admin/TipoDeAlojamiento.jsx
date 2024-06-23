@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Nav from '../Nav';
-import './Alojamiento.css';
+import './Admin.css';
 import AdminSidebar from './AdminSidebar';
 import { Link } from 'react-router-dom';
 import { fetchTiposAlojamiento } from '../../utils/api';
