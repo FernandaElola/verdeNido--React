@@ -58,7 +58,7 @@ const FiltroAlojamientos = ({ onFiltrar }) => {
         <MdLocationOn className="filtro-icon" />
         <input
           type="text"
-          placeholder="¿A dónde vas?"
+          placeholder="Nombre del Alojamiento"
           value={nombre}
           onChange={(e) => setNombre(e.target.value)}
           className="filtro-input"

@@ -31,19 +31,23 @@ El proyecto fue desarrollado por:
 
 El sitio web presenta un catálogo interactivo donde los usuarios pueden explorar una amplia gama de opciones de alojamiento. Cada ficha de alojamiento incluye:
 
-- **Título y Descripción**: Información detallada sobre el alojamiento.
+- **Título y Descripción**: Información detallada que proporciona una visión clara del alojamiento.
+- **Tipo de Alojamiento**: Clasificación del alojamiento, como casa, departamento, hostel, etc.
 - **Precio por Día**: Tarifa diaria del alojamiento.
-- **Servicios Disponibles**: Lista de servicios incluidos, como Wi-Fi, piscina, estacionamiento, etc.
-- **Ubicación**: Visualización en un mapa interactivo para facilitar la localización.
+- **Cantidad de Dormitorios**: Número de habitaciones disponibles.
+- **Cantidad de Baños**: Número de baños en el alojamiento.
+- **Estado**: Indica si el alojamiento está "Disponible" o "Reservado".
 
 ### Filtro de Búsqueda Avanzado
 
 El filtro de búsqueda permite a los usuarios encontrar alojamientos específicos según sus necesidades y preferencias. Los criterios de búsqueda incluyen:
 
-- **Ubicación**: Filtrar por ciudad o región.
-- **Tipo de Alojamiento**: Casas, departamentos, hostels, etc.
-- **Precio**: Rango de precios para ajustar según el presupuesto del usuario.
-- **Servicios**: Opciones de servicios específicos que los usuarios desean, como piscina, aire acondicionado, etc.
+- **Nombre del Alojamiento**: Permite buscar alojamientos específicos por su nombre.
+- **Tipo de Alojamiento**: Filtrar por casas, departamentos, hostels, etc.
+- **Disponibilidad**: Opción para buscar alojamientos disponibles o reservados.
+- **Rango de Precio**: Ajustar la búsqueda según el presupuesto del usuario.
+- **Número de Dormitorios**: Filtrar según la cantidad de dormitorios.
+- **Número de Baños**: Filtrar según la cantidad de baños.
 
 ### Detalles del Alojamiento
 
@@ -59,12 +63,11 @@ Una de las funcionalidades más destacadas es la visualización de detalles del 
 - **Barra de Navegación**: Una barra de navegación superior que facilita el acceso a diferentes secciones del sitio.
 - **Animaciones Suaves**: Transiciones y efectos de animación que mejoran la experiencia de usuario al interactuar con la página.
 
-### Formulario de Contacto Funcional
+### Formulario de Contacto
 
 El formulario de contacto permite a los usuarios enviar consultas o mensajes a los administradores del sitio. Incluye:
 
-- **Validación en Tiempo Real**: Los campos del formulario son validados al momento de ingreso para asegurar que se complete correctamente.
-- **Envío de Datos**: Los datos del formulario son enviados a través de una API local, y el usuario recibe una confirmación del envío exitoso o de los errores.
+- **Muestra de Información Enviada**: Al completar y enviar el formulario, la información ingresada se muestra en pantalla para confirmar los detalles enviados.
 
 ## Sección de Administración
 
@@ -123,16 +126,10 @@ Para probar la aplicación web con datos reales, se ha incluido un dump de la ba
 2. **Crear una Nueva Base de Datos**: Cree una nueva base de datos desde la pestaña `Schemas` haciendo clic derecho y seleccionando `Create Schema...`. Asigne un nombre a su base de datos.
 3. **Importar el Dump**: 
    - Vaya a `Server` -> `Data Import`.
-   - Seleccione `Import from Self-Contained File` y busque el archivo `dump.sql` incluido en la carpeta del proyecto.
+   - Seleccione `Import from Dump Projet Folder` y busque la carpeta `Dump_VerdeNido` incluido en la carpeta del proyecto.
    - En `Default Target Schema`, seleccione la base de datos que acaba de crear.
    - Haga clic en `Start Import` para comenzar la importación.
 4. **Verificación**: Una vez completada la importación, verifique que las tablas y datos han sido importados correctamente navegando a la pestaña `Schemas` y expandiendo la base de datos creada.
-
-## Conclusión
-
-**Verde Nido** ofrece una experiencia completa y enriquecida para los usuarios que buscan alojamientos rodeados de naturaleza. La plataforma es intuitiva y cuenta con todas las funcionalidades necesarias para facilitar la búsqueda, exploración y reserva de alojamientos, tanto para los usuarios como para los administradores del sitio.
-
-Si tienen alguna pregunta o necesitan más detalles sobre el proyecto, estamos a su disposición para responder y proporcionar toda la información necesaria.
 
 ---
 
