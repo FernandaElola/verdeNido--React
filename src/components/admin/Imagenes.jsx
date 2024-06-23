@@ -17,7 +17,20 @@ const Imagenes = () => {
     'img/Alojamientos_IMG/CASA3.jpg',
     'img/Alojamientos_IMG/CASA4.jpg',
     'img/Alojamientos_IMG/CASA5.jpg',
-    'img/Alojamientos_IMG/CASA6.jpg'
+    'img/Alojamientos_IMG/CASA6.jpg',
+    'img/Alojamientos_IMG/INTERIOR1.jpg',
+    'img/Alojamientos_IMG/INTERIOR2.jpg',
+    'img/Alojamientos_IMG/INTERIOR3.jpg',
+    'img/Alojamientos_IMG/INTERIOR4.jpg',
+    'img/Alojamientos_IMG/INTERIOR5.jpg',
+    'img/Alojamientos_IMG/INTERIOR6.jpg',
+    'img/Alojamientos_IMG/INTERIOR7.jpg',
+    'img/Alojamientos_IMG/INTERIOR8.jpg',
+    'img/Alojamientos_IMG/INTERIOR9.jpg',
+    'img/Alojamientos_IMG/INTERIOR10.jpg',
+    'img/Alojamientos_IMG/INTERIOR11.jpg',
+    'img/Alojamientos_IMG/INTERIOR12.jpg',
+    'img/Alojamientos_IMG/INTERIOR13.jpg'
   ];
 
   useEffect(() => {
@@ -62,7 +75,7 @@ const Imagenes = () => {
 
         console.log('Image added successfully to DB', response);
         window.location.reload();
-        setSelectedImagen(''); // Reset selectedImagen after successful addition to DB
+        setSelectedImagen(''); 
       } catch (error) {
         console.error('Error adding image to DB:', error);
       }
@@ -79,7 +92,7 @@ const Imagenes = () => {
         <div className="main-content">
           <div className="header">
             <h2>Imágenes para {alojamiento.Titulo}</h2>
-            <Link className="add-button" to="/admin/alojamientos">←</Link>
+            <Link className="back-button" to="/admin/alojamientos">← Volver</Link>
           </div>
           <table>
             <thead>
@@ -114,7 +127,7 @@ const Imagenes = () => {
                     </option>
                   ))}
                 </select>
-                  <button className="add" onClick={handleAddImage}>Agregar Imagen</button>
+                  <button className="addButton" onClick={handleAddImage}>Agregar Imagen</button>
                 </td>
               </tr>
             </tbody>
