@@ -39,7 +39,7 @@ const AddTipoAlojamiento = () => {
   };
 
   return (
-    <div className="main-container">
+    <div className="add-tipo-alojamiento">
       <Nav />
       <div className="content-container">
         <div className="form-container">

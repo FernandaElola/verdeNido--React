@@ -1,10 +1,10 @@
-.main-container {
+.add-tipo-alojamiento {
   height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-.content-container {
+.add-tipo-alojamiento .content-container {
   flex: 1;
   display: flex;
   justify-content: center;
@@ -14,19 +14,19 @@
   background-color: var(--color-claro);
 }
 
-.form-container h2{
+.add-tipo-alojamiento .form-container h2{
   color: var(--color-dark-green);
   font-size: 30px;
 }
 
-.form-container {
+.add-tipo-alojamiento .form-container {
   padding: 30px;
   border-radius: 10px;
   max-width: 500px;
   width: 100%;
 }
 
-.form-container form {
+.add-tipo-alojamiento .form-container form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,11 +39,11 @@
 
 
 
-.form-container label {
+.add-tipo-alojamiento .form-container label {
   padding: 20px;
 }
 
-.form-container input {
+.add-tipo-alojamiento .form-container input {
   width: 300px;
   padding: 10px;
   margin-bottom: 20px;
@@ -52,13 +52,13 @@
   font-size: 16px;
 }
 
-.button-container {
+.add-tipo-alojamiento .button-container {
   display: flex;
   justify-content: center;
   gap: 10px;
 }
 
-.form-container button {
+.add-tipo-alojamiento .form-container button {
   padding: 10px 20px;
   background-color: #4CAF50;
   color: white;
@@ -70,22 +70,22 @@
   text-decoration: none;
 }
 
-.form-container .cancel {
+.add-tipo-alojamiento .form-container .cancel {
   background-color: #FF0000;
 }
 
-.form-container button:hover {
+.add-tipo-alojamiento .form-container button:hover {
   background-color: #429446;
 }
 
-.form-container .cancel:hover {
+.add-tipo-alojamiento .form-container .cancel:hover {
   background-color: #994439;
 }
 
-.form-container h2 {
+.add-tipo-alojamiento .form-container h2 {
   text-align: center;
 }
 
-.form-container .buttons .cancel {
+.add-tipo-alojamiento .form-container .buttons .cancel {
   margin: 10px;
 }

@@ -33,6 +33,7 @@
 }
 
 .filtro-icon {
+  padding-bottom: 18px;
   margin-right: 8px;
   font-size: 1.2em;
   color: white;
@@ -50,10 +51,12 @@
 .filtro-input {
   flex: 1;
   min-width: 200px;
+  margin-bottom: 16px;
 }
 
 .filtro-input::placeholder {
   color: black;
+  font-size: 16px;
 }
 
 .filtro-select {

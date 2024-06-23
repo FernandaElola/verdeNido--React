@@ -29,8 +29,13 @@
     font-size: 18px;
 }
 
-.contact h2,
-h3 {
+.contact h2 {
+    text-align: center;
+    margin: 20px 0 10px 0;
+    color: var(--color-red);
+}
+
+.contact h3 {
     text-align: center;
     margin: 20px 0 10px 0;
     color: var(--color-red);

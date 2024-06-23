@@ -1,30 +1,49 @@
 
-.form-container {
+.add-alojamiento {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.add-alojamiento .content-container{
+  align-items: center;
+  justify-content: center;
+  padding: 0px 20px 50px 20px;
+}
+
+
+.add-alojamiento .form-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  padding: 20px;
-  background-color: #f9f9f9;
+  background-color: var(--color-claro);
 }
 
-.form-container form {
+.add-alojamiento .form-container h2{
+ font-size: 30px;
+ color: var(--color-dark-green);
+}
+
+.add-alojamiento .form-container form {
+  font-size: 18px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: white;
-  padding: 30px;
+  background-color: var(--color-claro);
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--color-dark-green);
 }
 
-.form-container label {
+.add-alojamiento .form-container label {
   padding: 20px;
 }
 
 
-.form-container input {
+.add-alojamiento .form-container input {
   width: 300px;
   padding: 10px;
   margin-bottom: 20px;
@@ -33,8 +52,9 @@
   font-size: 16px;
 }
 
-.form-container button {
+.add-alojamiento .form-container .submit {
   padding: 10px 20px;
+  margin-right: 20px;
   background-color: #4CAF50;
   color: white;
   border: none;
@@ -45,6 +65,23 @@
   text-decoration: none;
 }
 
-.form-container button:hover {
+.add-alojamiento .form-container .cancel {
+  padding: 10px 20px;
+  background-color: #FF0000;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+}
+
+.add-alojamiento .form-container .submit:hover {
   background-color: #45a049;
+}
+
+
+.add-alojamiento .form-container .cancel:hover {
+  background-color: #994439;
 }
