@@ -1,22 +1,21 @@
 import React, { useState  } from 'react';
-import Nav from '../../Home/Nav';
+import Nav from '../../Nav';
 import './Form.css';
-import './AddTipoAlojamiento.css';
 import { useNavigate } from 'react-router-dom';
 
 const AddTipoAlojamiento = () => {
 
-  const [descripcion, setDescription] = useState('');
+  const [nombre, setNombre] = useState('');
   const navigate = useNavigate();
 
   const enviar = async (e) => {
     e.preventDefault();
     const json = {
-      Descripcion: descripcion
+      Nombre: nombre
     };
 
     try {
-      const response = await fetch('http://localhost:3001/tiposAlojamiento/createTipoAlojamiento', {
+      const response = await fetch('http://localhost:3001/servicio/createServicio', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -27,33 +26,33 @@ const AddTipoAlojamiento = () => {
       const data = await response.json();
       console.log('Success:', data);
 
-      setDescription('');
-      alert('Tipo de alojamiento creado con éxito');
-      navigate('/admin/tipo-alojamiento');
+      setNombre('');
+      alert('Servicio creado con éxito');
+      navigate('/admin/servicios');
     } catch (error) {
       console.error('Error:', error);
     }
   }
 
   const handleCancel = () => {
-    navigate('/admin/tipo-alojamiento');
+    navigate('/admin/servicios');
   };
 
   return (
-    <div className="add-tipo-alojamiento">
+    <div className="main-container">
       <Nav />
       <div className="content-container">
         <div className="form-container">
           
-      <h2>Agregar Tipo Alojamiento</h2>
+      <h2>Agregar Servicio</h2>
           <form onSubmit={enviar}>
             <div>
-              <label htmlFor="descripcion">Descripción</label>
+              <label htmlFor="nombre">Nombre</label>
               <input
                 type="text"
-                id="descripcion"
-                value={descripcion}
-                onChange={(e) => setDescription(e.target.value)}
+                id="nombre"
+                value={nombre}
+                onChange={(e) => setNombre(e.target.value)}
               />
             </div>
             <div className="buttons">

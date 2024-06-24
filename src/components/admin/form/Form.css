@@ -42,6 +42,13 @@
   padding: 20px;
 }
 
+.form-container .cancel {
+  background-color: #FF0000;
+}
+
+.form-container .cancel:hover {
+  background-color: #994439;
+}
 
 .add-alojamiento .form-container input {
   width: 300px;
@@ -63,6 +70,7 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
   text-decoration: none;
+  margin: 5px;
 }
 
 .add-alojamiento .form-container .cancel {
