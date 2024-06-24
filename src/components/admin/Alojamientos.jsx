@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-
 import Nav from '../Home/Nav';
 import AdminSidebar from './AdminSidebar';
 import { Link, useNavigate } from 'react-router-dom';
@@ -42,6 +41,7 @@ const Alojamientos = () => {
     const fetchData = async () => {
       try {
         const data = await fetchTiposAlojamiento();
+        console.log('Tipos de alojamiento cargados:', data); // Verifica la respuesta en la consola
         setTiposAlojamiento(data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -342,7 +342,7 @@ const Alojamientos = () => {
                           ))}
                         </select>
                       ) : (
-                        tiposAlojamiento.find((tipo) => tipo.idTipoAlojamiento === alojamiento.TipoAlojamiento)?.Descripcion || 'Desconocido'
+                        tiposAlojamiento.find((tipo) => tipo.idTipoAlojamiento === alojamiento.idTipoAlojamiento)?.Descripcion || 'Desconocido'
                       )}
                     </td>
                     <td>
