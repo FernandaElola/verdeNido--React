@@ -2,8 +2,7 @@ import './Main.css';
 import { Banner } from './Banner';
 import { Nav } from './Nav';
 import { Footer } from './Footer';
-import FloatingButton from './FloatingButton';
-import AlojamientoList from './AlojamientoList';
+import AlojamientoList from './Alojamientos/AlojamientoList';
 import IntroMain from './IntroMain';
 
 
@@ -14,7 +13,6 @@ export const Main = () => {
         <>   
             <main>
                 <Banner />
-                <FloatingButton />
                 <Nav />
                 <IntroMain />
                 <AlojamientoList />

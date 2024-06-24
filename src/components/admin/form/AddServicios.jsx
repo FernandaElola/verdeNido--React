@@ -1,5 +1,5 @@
 import React, { useState  } from 'react';
-import Nav from '../../Nav';
+import Nav from '../../Home/Nav';
 import './Form.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -56,7 +56,7 @@ const AddTipoAlojamiento = () => {
               />
             </div>
             <div className="buttons">
-              <button type="submit">Enviar</button>
+              <button className="submit" type="submit">Enviar</button>
               <button className="cancel" type="button" onClick={handleCancel}>Cancelar</button>
             </div>         
           </form>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import AlojamientoCard from './AlojamientoCard';
-import FiltroAlojamientos from './FiltroAlojamientos';
-import { fetchAlojamientos, fetchImagenes, fetchTiposAlojamiento } from '../utils/api.js'; // Importar las funciones de api.js
+import FiltroAlojamientos from './FiltroAlojamientos.jsx';
+import { fetchAlojamientos, fetchImagenes, fetchTiposAlojamiento } from '../../../utils/api.js'; // Importar las funciones de api.js
 import './AlojamientoList.css';
 
 const AlojamientoList = () => {
@@ -64,11 +64,13 @@ const AlojamientoList = () => {
         banios = ''
       } = filtros;
 
+      const [precioMin, precioMax] = rangoPrecios ? rangoPrecios.split('-').map(p => parseInt(p, 10)) : [0, Infinity];
+
       return (
         (nombre === '' || alojamiento.Titulo.toLowerCase().includes(nombre.toLowerCase())) &&
         (tipoAlojamiento === '' || alojamiento.tipoAlojamiento === tipoAlojamiento) &&
         (disponibilidad === '' || alojamiento.Estado === disponibilidad) &&
-        (rangoPrecios === '' || alojamiento.PrecioPorDia <= parseInt(rangoPrecios.split('-')[1], 10)) &&
+        (rangoPrecios === '' || (alojamiento.PrecioPorDia >= precioMin && alojamiento.PrecioPorDia <= precioMax)) &&
         (dormitorios === '' || alojamiento.CantidadDormitorios === parseInt(dormitorios, 10)) &&
         (banios === '' || alojamiento.CantidadBanios === parseInt(banios, 10))
       );
@@ -81,9 +83,13 @@ const AlojamientoList = () => {
   return (
     <div className="alojamiento-list">
       <FiltroAlojamientos onFiltrar={handleFiltrar} />
-      {alojamientos.map(alojamiento => (
-        <AlojamientoCard key={alojamiento.idAlojamiento} alojamiento={alojamiento} />
-      ))}
+      {alojamientos.length === 0 ? (
+        <div className="no-results-message">No se han encontrado alojamientos con esas características.</div>
+      ) : (
+        alojamientos.map(alojamiento => (
+          <AlojamientoCard key={alojamiento.idAlojamiento} alojamiento={alojamiento} />
+        ))
+      )}
     </div>
   );
 };

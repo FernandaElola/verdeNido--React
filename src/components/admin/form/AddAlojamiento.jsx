@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Nav from '../../Nav';
+import Nav from '../../Home/Nav';
 import './Form.css';
 import { useNavigate } from 'react-router-dom';
 import { fetchAlojamientos, fetchTiposAlojamiento } from '../../../utils/api';
@@ -83,7 +83,7 @@ const AddAlojamiento = () => {
   };
 
   return (
-    <div className="main-container">
+    <div className="add-alojamiento">
       <Nav />
       <div className="content-container">
         <div className="form-container">
@@ -189,7 +189,7 @@ const AddAlojamiento = () => {
               </select>
             </div>
             <div className="buttons">
-              <button type="submit">Enviar</button>
+              <button className="submit" type="submit">Enviar</button>
               <button className="cancel" type="button" onClick={handleCancel}>
                 Cancelar
               </button>
