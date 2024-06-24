@@ -6,14 +6,14 @@
 }
 
 
-.add-alojamiento .content-container{
+.content-container{
   align-items: center;
   justify-content: center;
   padding: 0px 20px 50px 20px;
 }
 
 
-.add-alojamiento .form-container {
+.form-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,12 +21,12 @@
   background-color: var(--color-claro);
 }
 
-.add-alojamiento .form-container h2{
+.form-container h2{
  font-size: 30px;
  color: var(--color-dark-green);
 }
 
-.add-alojamiento .form-container form {
+.form-container form {
   font-size: 18px;
   padding: 20px;
   display: flex;
@@ -38,7 +38,7 @@
   border: 1px solid var(--color-dark-green);
 }
 
-.add-alojamiento .form-container label {
+.form-container label {
   padding: 20px;
 }
 
@@ -50,7 +50,7 @@
   background-color: #994439;
 }
 
-.add-alojamiento .form-container input {
+.form-container input {
   width: 300px;
   padding: 10px;
   margin-bottom: 20px;
@@ -59,10 +59,9 @@
   font-size: 16px;
 }
 
-.add-alojamiento .form-container .submit {
+.form-container button {
   padding: 10px 20px;
   margin-right: 20px;
-  background-color: #4CAF50;
   color: white;
   border: none;
   border-radius: 5px;
@@ -73,23 +72,9 @@
   margin: 5px;
 }
 
-.add-alojamiento .form-container .cancel {
-  padding: 10px 20px;
-  background-color: #FF0000;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  text-decoration: none;
+.form-container .submit {
+  background-color: #4CAF50;;
 }
-
-.add-alojamiento .form-container .submit:hover {
+.form-container .submit:hover {
   background-color: #45a049;
-}
-
-
-.add-alojamiento .form-container .cancel:hover {
-  background-color: #994439;
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './Alojamiento.css';
+
 import Nav from '../Home/Nav';
 import AdminSidebar from './AdminSidebar';
 import { Link, useNavigate } from 'react-router-dom';

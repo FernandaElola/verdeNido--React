@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Nav from '../Nav';
+import Nav from '../Home/Nav';
 import './Admin.css';
 import AdminSidebar from './AdminSidebar';
 import { Link, useParams } from 'react-router-dom';
@@ -30,7 +30,12 @@ const Imagenes = () => {
     'img/Alojamientos_IMG/INTERIOR10.jpg',
     'img/Alojamientos_IMG/INTERIOR11.jpg',
     'img/Alojamientos_IMG/INTERIOR12.jpg',
-    'img/Alojamientos_IMG/INTERIOR13.jpg'
+    'img/Alojamientos_IMG/BAÑO1.jpg',
+    'img/Alojamientos_IMG/BAÑO2.jpg',
+    'img/Alojamientos_IMG/BAÑO3.jpg',
+    'img/Alojamientos_IMG/BAÑO4.jpg',
+    'img/Alojamientos_IMG/BAÑO5.jpg',
+    'img/Alojamientos_IMG/BAÑO6.jpg',
   ];
 
   useEffect(() => {
