@@ -22,7 +22,7 @@ const Alojamientos = () => {
     CantidadDormitorios: '',
     CantidadBanios: '',
     Estado: '',
-    TipoAlojamiento: '',
+    idTipoAlojamiento: '',
   });
 
   useEffect(() => {
@@ -73,7 +73,7 @@ const Alojamientos = () => {
         console.error('Error fetching data:', error);
       }
     };
-  
+
     fetchData();
   }, []);
 
@@ -86,7 +86,7 @@ const Alojamientos = () => {
         console.error('Error fetching data:', error);
       }
     };
-  
+
     fetchData();
   }, []);
 
@@ -137,12 +137,12 @@ const Alojamientos = () => {
         );
         setEditIndex(null);
         alert('Alojamiento editado con éxito');
-        window.location.reload(); 
+        window.location.reload();
       } else {
         console.error('Error al editar el alojamiento:', response.statusText);
         alert('Error al intentar editar el alojamiento');
       }
-      
+
     } catch (error) {
       console.error('Error al editar el alojamiento:', error.message);
       alert('Error al intentar editar el alojamiento');
@@ -202,7 +202,7 @@ const Alojamientos = () => {
               </tr>
             </thead>
             <tbody>
-              {alojamientos.map((alojamiento, index) => {   
+              {alojamientos.map((alojamiento, index) => {
                 return (
                   <tr key={alojamiento.idAlojamiento}>
                     <td>{alojamiento.idAlojamiento}</td>
@@ -330,8 +330,8 @@ const Alojamientos = () => {
                     <td>
                       {editIndex === index ? (
                         <select
-                          name="TipoAlojamiento"
-                          value={editAlojamiento.TipoAlojamiento}
+                          name="idTipoAlojamiento" // Cambiado de TipoAlojamiento a idTipoAlojamiento
+                          value={editAlojamiento.idTipoAlojamiento}
                           onChange={handleInputChange}
                         >
                           <option value="">Seleccione un tipo de alojamiento</option>
@@ -342,7 +342,7 @@ const Alojamientos = () => {
                           ))}
                         </select>
                       ) : (
-                        tiposAlojamiento.find((tipo) => tipo.idTipoAlojamiento === alojamiento.TipoAlojamiento)?.Descripcion || 'Desconocido'
+                        tiposAlojamiento.find((tipo) => tipo.idTipoAlojamiento === alojamiento.idTipoAlojamiento)?.Descripcion || 'Desconocido'
                       )}
                     </td>
                     <td>
