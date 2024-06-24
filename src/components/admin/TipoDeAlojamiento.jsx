@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Nav from '../Nav';
-import './Alojamiento.css';
+import Nav from '../Home/Nav';
+import './Admin.css';
 import AdminSidebar from './AdminSidebar';
 import { Link } from 'react-router-dom';
+import { fetchTiposAlojamiento } from '../../utils/api';
 
 const TipoDeAlojamientos = () => {
   const [tiposAlojamiento, setTiposAlojamiento] = useState([]);
@@ -10,17 +11,16 @@ const TipoDeAlojamientos = () => {
   const [editDescripcion, setEditDescripcion] = useState('');
 
   useEffect(() => {
-    const fetchTiposAlojamiento = async () => {
+    const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:3001/tiposAlojamiento/getTiposAlojamiento');
-        const data = await response.json();
+        const data = await fetchTiposAlojamiento();
         setTiposAlojamiento(data);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     };
 
-    fetchTiposAlojamiento();
+    fetchData();
   }, []);
 
   const handleClickDelete = async (idTipoAlojamiento) => {
@@ -80,7 +80,7 @@ const TipoDeAlojamientos = () => {
         <div className="main-content">
           <div className="header">
             <h2>Tipos de Alojamientos</h2>
-              <Link className="add-button" to="/admin/tipo-alojamiento/agregar">+</Link>
+            <Link className="add-button" to="/admin/tipo-alojamiento/agregar">+</Link>
           </div>
           <table>
             <thead>
@@ -91,7 +91,7 @@ const TipoDeAlojamientos = () => {
               </tr>
             </thead>
             <tbody>
-              {tiposAlojamiento.map((tipo, index) => (
+              {Array.isArray(tiposAlojamiento) && tiposAlojamiento.map((tipo, index) => (
                 <tr key={tipo.idTipoAlojamiento}>
                   <td>{tipo.idTipoAlojamiento}</td>
                   <td>
@@ -120,6 +120,7 @@ const TipoDeAlojamientos = () => {
                   </td>
                 </tr>
               ))}
+
             </tbody>
           </table>
         </div>

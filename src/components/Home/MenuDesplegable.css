@@ -1,0 +1,91 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(242, 237, 227, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.overlay-menu {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    animation: slideIn 0.5s forwards;
+    align-items: center;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+.overlay-menu li {
+    margin-bottom: 20px;
+}
+
+.overlay-menu a {
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    color: var(--color-dark-green);
+    font-weight: lighter;
+    font-size: 0.8em;
+    padding: 10px 50px;
+    position: relative;
+    transition: all 0.3s;
+    display: block;
+    width: 100%;
+}
+
+.overlay-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--color-dark-green);
+    transition: width 0.8s;
+}
+
+.overlay-menu a:hover {
+    color: var(--color-red);
+}
+
+@media (max-width: 900px) {
+    .nav-left, .nav-right {
+        display: none;
+    }
+
+    .navbar {
+        justify-content: flex-end;
+        background-color: transparent;
+    }
+
+    .logo img {
+        height: 80px;
+    }
+}

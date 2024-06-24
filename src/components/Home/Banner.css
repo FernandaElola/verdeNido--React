@@ -1,0 +1,96 @@
+@import url('../Variables.css');
+
+.banner {
+    position: relative;
+    background-color: var(--color-claro);
+    opacity: 0;
+    transform: translateY(10%);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    overflow: hidden; /* Asegura que el contenido se recorte */
+    height: 100vh; /* Hace que el banner ocupe siempre toda la altura del viewport */
+    z-index: 50;
+}
+
+.banner.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.banner .container-banner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Centra verticalmente en el contenedor */
+    height: 100%;
+    width: 100%;
+    overflow: hidden; /* Asegura que el contenido se recorte */
+}
+
+.banner .title {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 80%; /* Establece un tamaño máximo para el título */
+    min-width: 650px; /* Establece un tamaño mínimo para el título */
+    text-align: center; /* Centra el texto */
+    z-index: 50;
+    color: #fff; /* Color del texto para asegurarse de que sea visible */
+}
+
+.banner .banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* La imagen se recorta para cubrir el contenedor */
+    object-position: center; /* La imagen se centra en el contenedor */
+    max-height: 100vh; /* Limita la altura máxima al viewport */
+    border-bottom-left-radius: 40%;
+    border-bottom-right-radius: 40%;
+}
+
+/* Media Queries para responsividad */
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 600px) {
+    .banner .title {
+        font-size: 1.2em; /* Ajusta el tamaño del texto */
+        top: 50%;
+        transform: translateY(-50%);
+        width: 90%;
+    }
+
+    .banner .banner-img {
+        border-bottom-left-radius: 25%;
+        border-bottom-right-radius: 25%;
+    }
+}
+
+/* Estilos para pantallas medianas */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .banner .title {
+        font-size: 1.5em; /* Ajusta el tamaño del texto */
+        top: 50%;
+        transform: translateY(-50%);
+        width: 85%;
+    }
+
+    .banner .banner-img {
+        border-bottom-left-radius: 30%;
+        border-bottom-right-radius: 30%;
+    }
+}
+
+/* Estilos para pantallas grandes */
+@media (min-width: 1025px) {
+    .banner .title {
+        font-size: 2em; /* Ajusta el tamaño del texto */
+        top: 50%;
+        transform: translateY(-50%);
+        width: 80%;
+    }
+
+    .banner .banner-img {
+        border-bottom-left-radius: 35%;
+        border-bottom-right-radius: 35%;
+    }
+}

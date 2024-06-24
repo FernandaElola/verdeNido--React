@@ -1,39 +1,195 @@
-import './Alojamiento.css';
-import Nav from '../Nav';
+import React, { useState, useEffect } from 'react';
+import Nav from '../Home/Nav';
 import AdminSidebar from './AdminSidebar';
 import { Link } from 'react-router-dom';
-
-const cabins = [
-  { id: 1, name: 'Cabaña frente al lago', description: 'Cabaña frente al lago', latitude: 432, longitude: 234, price: 120000, rooms: 3, bathrooms: 2, state: 'Rio Negro', tipoAlojamiento: 'Cabaña' },
-  { id: 2, name: 'Hotel Santa Fe', description: 'Hotel Santa Fe', latitude: 234, longitude: 334, price: 80000, rooms: 2, bathrooms: 2, state: 'Santa Fe', tipoAlojamiento: 'Hotel' }
-];  
+import { fetchAlojamientos, deleteAlojamiento, fetchTiposAlojamiento, fetchImagenes, fetchServicios, fetchAlojamientoServicios } from '../../utils/api';
 
 const Alojamientos = () => {
-  const handleClickAdd = () => {
-    alert('Click Add');
+  const [alojamientos, setAlojamientos] = useState([]);
+  const [tiposAlojamiento, setTiposAlojamiento] = useState([]);
+  const [imagenes, setImagenes] = useState([]);
+  const [servicios, setServicios] = useState([]);
+  const [editIndex, setEditIndex] = useState(null);
+  const [alojamientoServicios, setAlojamientoServicios] = useState([]);
+  const [editAlojamiento, setEditAlojamiento] = useState({
+    idAlojamiento: null,
+    Titulo: '',
+    Descripcion: '',
+    Latitud: '',
+    Longitud: '',
+    PrecioPorDia: '',
+    CantidadDormitorios: '',
+    CantidadBanios: '',
+    Estado: '',
+    TipoAlojamiento: '',
+  });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await fetchAlojamientos();
+        setAlojamientos(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await fetchTiposAlojamiento();
+        console.log('Tipos de alojamiento cargados:', data); // Verifica la respuesta en la consola
+        setTiposAlojamiento(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await fetchImagenes();
+        setImagenes(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await fetchServicios();
+        setServicios(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+  
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await fetchAlojamientoServicios();
+        setAlojamientoServicios(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+  
+    fetchData();
+  }, []);
+
+  const handleClickDelete = async (idAlojamiento) => {
+    try {
+      const response = await deleteAlojamiento(idAlojamiento);
+      if (response.ok) {
+        setAlojamientos((prev) => prev.filter((alojamiento) => alojamiento.idAlojamiento !== idAlojamiento));
+      } else {
+        alert('Error al intentar borrar el alojamiento');
+      }
+    } catch (error) {
+      alert('Error al intentar borrar el alojamiento');
+    }
   };
-  const handleClickEdit = () => {
-    alert('Click Editar');
+
+  const handleEditClick = (index, alojamiento) => {
+    setEditIndex(index);
+    setEditAlojamiento({
+      idAlojamiento: alojamiento.idAlojamiento,
+      Titulo: alojamiento.Titulo,
+      Descripcion: alojamiento.Descripcion,
+      Latitud: alojamiento.Latitud,
+      Longitud: alojamiento.Longitud,
+      PrecioPorDia: alojamiento.PrecioPorDia,
+      CantidadDormitorios: alojamiento.CantidadDormitorios,
+      CantidadBanios: alojamiento.CantidadBanios,
+      Estado: alojamiento.Estado,
+      TipoAlojamiento: alojamiento.TipoAlojamiento,
+    });
   };
-  const handleClickDelete = () => {
-    alert('Click Borrar');
+
+  const handleEditSubmit = async () => {
+    try {
+      const response = await fetch(`http://localhost:3001/alojamiento/putAlojamiento/${editAlojamiento.idAlojamiento}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(editAlojamiento)
+      });
+
+      if (response.ok) {
+        setAlojamientos((prev) =>
+          prev.map((alojamiento) =>
+            alojamiento.idAlojamiento === editAlojamiento.idAlojamiento ? { ...editAlojamiento } : alojamiento
+          )
+        );
+        setEditIndex(null);
+        alert('Alojamiento editado con éxito');
+        window.location.reload(); 
+      } else {
+        console.error('Error al editar el alojamiento:', response.statusText);
+        alert('Error al intentar editar el alojamiento');
+      }
+      
+    } catch (error) {
+      console.error('Error al editar el alojamiento:', error.message);
+      alert('Error al intentar editar el alojamiento');
+    }
+  };
+
+  const handleCancelEdit = () => {
+    setEditIndex(null);
+    setEditAlojamiento({
+      idAlojamiento: null,
+      Titulo: '',
+      Descripcion: '',
+      Latitud: '',
+      Longitud: '',
+      PrecioPorDia: '',
+      CantidadDormitorios: '',
+      CantidadBanios: '',
+      Estado: '',
+      TipoAlojamiento: '',
+    });
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setEditAlojamiento((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   return (
     <div className="admin-container">
       <Nav />
       <div className="admin-content">
-      <AdminSidebar />
+        <AdminSidebar />
         <div className="main-content">
           <div className="header">
             <h2>Alojamientos</h2>
-            <Link className="add-button" to="" onClick={handleClickAdd}>+</Link>
+            <Link className="add-button" to="/admin/alojamiento/agregar">+</Link>
           </div>
           <table>
             <thead>
               <tr>
                 <th>ID</th>
-                <th>Nombre</th>
+                <th>Imagen</th>
+                <th>Servicios</th>
+                <th>Título</th>
                 <th>Descripción</th>
                 <th>Latitud</th>
                 <th>Longitud</th>
@@ -42,27 +198,169 @@ const Alojamientos = () => {
                 <th>Baños</th>
                 <th>Estado</th>
                 <th>Tipo Alojamiento</th>
+                <th>Acciones</th>
               </tr>
             </thead>
             <tbody>
-              {cabins.map(cabin => (
-                <tr key={cabin.id}>
-                  <td>{cabin.id}</td>
-                  <td>{cabin.name}</td>
-                  <td>{cabin.description}</td>
-                  <td>{cabin.latitude}</td>
-                  <td>{cabin.longitude}</td>
-                  <td>${cabin.price}</td>
-                  <td>{cabin.rooms}</td>
-                  <td>{cabin.bathrooms}</td>
-                  <td>{cabin.state}</td> 
-                  <td>{cabin.tipoAlojamiento}</td>                      
-                  <td>
-                    <button className="edit" onClick={handleClickEdit}>Editar</button>
-                    <button className="delete" onClick={handleClickDelete}>Borrar</button>
-                  </td>
-                </tr>
-              ))}
+              {alojamientos.map((alojamiento, index) => {   
+                return (
+                  <tr key={alojamiento.idAlojamiento}>
+                    <td>{alojamiento.idAlojamiento}</td>
+                    <td>
+                      <img
+                        src={`http://localhost:3000/${imagenes.find(img => img.idAlojamiento === alojamiento.idAlojamiento)?.RutaArchivo || 'img/default-image.jpg'}`}
+                        alt="Alojamiento"
+                        style={{ width: '100px', height: '100px' }}
+                      />
+                      <Link className="editButton" to={`/admin/imagenes/edit/${alojamiento.idAlojamiento}`}>Editar</Link>
+                    </td>
+                    <td>
+                      <ul>
+                        {alojamientoServicios
+                          .filter(servicio => servicio.idAlojamiento === alojamiento.idAlojamiento)
+                          .map(servicio => {
+                            const servicioInfo = servicios.find(serv => serv.idServicio === servicio.idServicio);
+                            return (
+                              <li key={servicio.idAlojamientoServicio}>
+                                {servicioInfo ? servicioInfo.Nombre : ''}
+                              </li>
+                            );
+                          })}
+                      </ul>
+                      <Link className="editButton" to={`/admin/servicios/edit/${alojamiento.idAlojamiento}`}>Editar</Link>
+                    </td>
+                    <td>
+                      {editIndex === index ? (
+                        <input
+                          type="text"
+                          name="Titulo"
+                          value={editAlojamiento.Titulo}
+                          onChange={handleInputChange}
+                        />
+                      ) : (
+                        alojamiento.Titulo
+                      )}
+                    </td>
+                    <td>
+                      {editIndex === index ? (
+                        <textarea
+                          name="Descripcion"
+                          value={editAlojamiento.Descripcion}
+                          onChange={handleInputChange}
+                        />
+                      ) : (
+                        alojamiento.Descripcion
+                      )}
+                    </td>
+                    <td>
+                      {editIndex === index ? (
+                        <input
+                          type="text"
+                          name="Latitud"
+                          value={editAlojamiento.Latitud}
+                          onChange={handleInputChange}
+                        />
+                      ) : (
+                        alojamiento.Latitud
+                      )}
+                    </td>
+                    <td>
+                      {editIndex === index ? (
+                        <input
+                          type="text"
+                          name="Longitud"
+                          value={editAlojamiento.Longitud}
+                          onChange={handleInputChange}
+                        />
+                      ) : (
+                        alojamiento.Longitud
+                      )}
+                    </td>
+                    <td>
+                      {editIndex === index ? (
+                        <input
+                          type="text"
+                          name="PrecioPorDia"
+                          value={editAlojamiento.PrecioPorDia}
+                          onChange={handleInputChange}
+                        />
+                      ) : (
+                        `$${alojamiento.PrecioPorDia}`
+                      )}
+                    </td>
+                    <td>
+                      {editIndex === index ? (
+                        <input
+                          type="text"
+                          name="CantidadDormitorios"
+                          value={editAlojamiento.CantidadDormitorios}
+                          onChange={handleInputChange}
+                        />
+                      ) : (
+                        alojamiento.CantidadDormitorios
+                      )}
+                    </td>
+                    <td>
+                      {editIndex === index ? (
+                        <input
+                          type="text"
+                          name="CantidadBanios"
+                          value={editAlojamiento.CantidadBanios}
+                          onChange={handleInputChange}
+                        />
+                      ) : (
+                        alojamiento.CantidadBanios
+                      )}
+                    </td>
+                    <td>
+                      {editIndex === index ? (
+                        <select
+                          name="Estado"
+                          value={editAlojamiento.Estado}
+                          onChange={handleInputChange}
+                        >
+                          <option value="">Seleccione un estado</option>
+                          <option value="Reservado">Reservado</option>
+                          <option value="Disponible">Disponible</option>
+                        </select>
+                      ) : (
+                        alojamiento.Estado
+                      )}
+                    </td>
+                    <td>
+                      {editIndex === index ? (
+                        <select
+                          name="TipoAlojamiento"
+                          value={editAlojamiento.TipoAlojamiento}
+                          onChange={handleInputChange}
+                        >
+                          <option value="">Seleccione un tipo de alojamiento</option>
+                          {tiposAlojamiento.map((tipo) => (
+                            <option key={tipo.idTipoAlojamiento} value={tipo.idTipoAlojamiento}>
+                              {tipo.Descripcion}
+                            </option>
+                          ))}
+                        </select>
+                      ) : (
+                        tiposAlojamiento.find((tipo) => tipo.idTipoAlojamiento === alojamiento.idTipoAlojamiento)?.Descripcion || 'Desconocido'
+                      )}
+                    </td>
+                    <td>
+                      {editIndex === index ? (
+                        <>
+                          <button className="edit" onClick={handleEditSubmit}>Guardar</button>
+                          <button className="delete" onClick={handleCancelEdit}>Cancelar</button>
+                        </>
+                      ) : (
+                        <>
+                          <button className="edit" onClick={() => handleEditClick(index, alojamiento)}>Editar</button>
+                          <button className="delete" onClick={() => handleClickDelete(alojamiento.idAlojamiento)}>Borrar</button>
+                        </>
+                      )}
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
@@ -72,3 +370,4 @@ const Alojamientos = () => {
 };
 
 export default Alojamientos;
+
