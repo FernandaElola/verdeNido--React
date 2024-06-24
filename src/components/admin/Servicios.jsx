@@ -2,14 +2,13 @@ import React, { useState, useEffect } from 'react';
 import Nav from '../Home/Nav';
 import './Admin.css';
 import AdminSidebar from './AdminSidebar';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { fetchServicios } from '../../utils/api';
 
 const Servicios = () => {
   const [servicios, setServicios] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
   const [editNombre, setEditNombre] = useState('');
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {

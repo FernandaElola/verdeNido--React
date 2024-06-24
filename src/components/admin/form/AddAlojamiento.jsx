@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react';
 import Nav from '../../Home/Nav';
 import './Form.css';
 import { useNavigate } from 'react-router-dom';
-import { fetchAlojamientos, fetchTiposAlojamiento } from '../../../utils/api';
+import { fetchTiposAlojamiento } from '../../../utils/api';
 
 const AddAlojamiento = () => {
   const navigate = useNavigate();
-  const [alojamiento, setAlojamiento] = useState([]);
   const [tipoAlojamientoOptions, setTipoAlojamientoOptions] = useState([]);
   const [form, setForm] = useState({
     titulo: '',
@@ -17,15 +16,12 @@ const AddAlojamiento = () => {
     cantidadDormitorios: '',
     cantidadBanios: '',
     estado: '',
-    TipoAlojamiento: '', // Nombre correcto del campo
+    TipoAlojamiento: ''
   });
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const alojamientoData = await fetchAlojamientos();
-        setAlojamiento(alojamientoData);
-
         const tipoAlojamientoData = await fetchTiposAlojamiento();
         console.log('Fetched tipoAlojamientoOptions:', tipoAlojamientoData);
         setTipoAlojamientoOptions(tipoAlojamientoData);
