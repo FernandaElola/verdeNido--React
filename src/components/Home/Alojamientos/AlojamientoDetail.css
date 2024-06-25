@@ -36,7 +36,7 @@
     width: 50%;
     padding: 20px;
     z-index: 1;
-}
+}   
 
 .alojamiento-detail .map-container {
     height: 100%;
@@ -112,4 +112,24 @@
     position: absolute;
     left: 0;
     top: 0;
+}
+@media (max-width: 900px) {
+    .alojamiento-detail {
+        flex-direction: column;
+        height: auto;
+        align-items: center;
+    }
+    .alojamiento-detail .details-column{
+        width: 100%;
+        padding: 0;
+    }
+    .alojamiento-detail .map-column {
+        align-items: center;
+        width: 80%;
+        height: 400px;
+        padding: 20px;
+        z-index: 1;
+        /* Verifica que no haya overflow: hidden que podría ocultar el mapa */
+        overflow:hidden; /* O ajusta según sea necesario */
+    }
 }
