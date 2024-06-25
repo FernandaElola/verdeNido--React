@@ -22,7 +22,7 @@ const Alojamientos = () => {
     CantidadDormitorios: '',
     CantidadBanios: '',
     Estado: '',
-    ididTipoAlojamiento: '',
+    idTipoAlojamiento: '',
   });
 
   useEffect(() => {
@@ -91,6 +91,9 @@ const Alojamientos = () => {
   }, []);
 
   const handleClickDelete = async (idAlojamiento) => {
+    if (!window.confirm('¿Estás seguro de que deseas eliminar este Alojamiento?')) {
+      return;
+    }
     try {
       const relaciones = alojamientoServicios.filter(servicio => servicio.idAlojamiento === idAlojamiento);  
       for (const relacion of relaciones) {
@@ -99,7 +102,7 @@ const Alojamientos = () => {
           throw new Error('Error al eliminar la relación entre alojamiento y servicio');
         }
       }
-
+  
       const imagenesToDelete = imagenes.filter(img => img.idAlojamiento === idAlojamiento);
       for (const imagen of imagenesToDelete) {
         const response = await deleteImagenes(imagen.idImagen);

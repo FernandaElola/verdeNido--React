@@ -24,18 +24,51 @@ const Servicios = () => {
   }, []);
 
   const handleClickDelete = async (idServicio) => {
+    if (!window.confirm('¿Estás seguro de que deseas eliminar este servicio?')) {
+      return;
+    }
     try {
-      const response = await fetch(`http://localhost:3001/servicio/deleteServicio/${idServicio}`, {
+      // Obtener todas las relaciones de alojamientoServicios
+      const relationsResponse = await fetch(`http://localhost:3001/alojamientosServicios/getAllAlojamientoServicios`);
+
+      if (!relationsResponse.ok) {
+        throw new Error('Error obteniendo las relaciones de alojamientoServicios');
+      }
+
+      const relationsData = await relationsResponse.json();
+
+      // Filtrar relaciones que coincidan con el idServicio
+      const relationsToDelete = relationsData.filter(relation => relation.idServicio === idServicio);
+
+      // Eliminar cada relación encontrada
+      for (const relation of relationsToDelete) {
+        const deleteRelationResponse = await fetch(`http://localhost:3001/alojamientosServicios/deleteAlojamientoServicio/${relation.idAlojamientoServicio}`, {
+          method: 'DELETE'
+        });
+
+        if (!deleteRelationResponse.ok) {
+          throw new Error(`Error eliminando la relación idAlojamientoServicio: ${relation.idAlojamientoServicio}`);
+        }
+      }
+
+      // Luego, eliminar el servicio
+      const deleteServiceResponse = await fetch(`http://localhost:3001/servicio/deleteServicio/${idServicio}`, {
         method: 'DELETE'
       });
 
-      if (response.ok) {
+      if (deleteServiceResponse.ok) {
         setServicios((prev) => prev.filter((servicio) => servicio.idServicio !== idServicio));
+        alert('Servicio eliminado con éxito');
+      } else {
+        const errorData = await deleteServiceResponse.json();
+        alert(`Error eliminando el servicio: ${errorData.message}`);
       }
     } catch (error) {
-      console.error('Error deleting data:', error);
+      console.error('Error eliminando el servicio:', error);
+      alert(`Ocurrió un error al eliminar el servicio: ${error.message}`);
     }
   };
+
 
   const handleEditClick = (index, nombre) => {
     setEditIndex(index);
@@ -100,7 +133,7 @@ const Servicios = () => {
                         type="text"
                         value={editNombre}
                         onChange={(e) => setEditNombre(e.target.value)}
-                        style={{ width: '200px' }}  
+                        style={{ width: '200px' }}  // Asegúrate de que el ancho sea suficiente
                       />
                     ) : (
                       servicio.Nombre

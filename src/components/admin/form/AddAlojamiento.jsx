@@ -16,8 +16,7 @@ const AddAlojamiento = () => {
     cantidadDormitorios: '',
     cantidadBanios: '',
     estado: '',
-    idTipoAlojamiento: '',
-    TipoAlojamiento: 0
+    idTipoAlojamiento: ''
   });
 
   useEffect(() => {
@@ -48,7 +47,7 @@ const AddAlojamiento = () => {
       if (response.ok) {
         const data = await response.json();
         console.log('Success:', data);
-
+        alert('Alojamiento creado con éxito');
         setForm({
           titulo: '',
           descripcion: '',
@@ -58,7 +57,7 @@ const AddAlojamiento = () => {
           cantidadDormitorios: '',
           cantidadBanios: '',
           estado: '',
-          idTipoAlojamiento: '',
+          idTipoAlojamiento: ''
         });
 
         navigate('/admin/alojamientos');
@@ -155,11 +154,11 @@ const AddAlojamiento = () => {
                 value={form.cantidadBanios}
                 onChange={handleChange}
               />
-            </div>           
+            </div>
             <div>
               <label htmlFor="estado">Estado</label>
               <select
-                id="number"
+                id="estado"
                 name="estado"
                 value={form.estado}
                 onChange={handleChange}

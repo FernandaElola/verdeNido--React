@@ -24,6 +24,9 @@ const TipoDeAlojamientos = () => {
   }, []);
 
   const handleClickDelete = async (idTipoAlojamiento) => {
+    if (!window.confirm('¿Estás seguro de que deseas eliminar este Tipo de alojamiento?')) {
+      return;
+    }
     try {
       const response = await fetch(`http://localhost:3001/tiposAlojamiento/deleteTipoAlojamiento/${idTipoAlojamiento}`, {
         method: 'DELETE'
@@ -31,6 +34,7 @@ const TipoDeAlojamientos = () => {
 
       if (response.ok) {
         setTiposAlojamiento((prev) => prev.filter((tipo) => tipo.idTipoAlojamiento !== idTipoAlojamiento));
+        alert('Tipo de alojamiento eliminado correctamente');
       }
     } catch (error) {
       console.error('Error deleting data:', error);
@@ -60,10 +64,10 @@ const TipoDeAlojamientos = () => {
         );
         setEditIndex(null);
         setEditDescripcion('');
-        alert('Tipo de alojamiento editado con éxito');
+        alert('Tipo de alojamiento editado correctamente');
       }
     } catch (error) {
-      console.error('Error editando data:', error);
+      console.error('Error editing data:', error);
     }
   };
 
@@ -120,7 +124,6 @@ const TipoDeAlojamientos = () => {
                   </td>
                 </tr>
               ))}
-
             </tbody>
           </table>
         </div>
