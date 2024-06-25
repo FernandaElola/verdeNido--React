@@ -3,7 +3,7 @@ import './Admin.css';
 import Nav from '../Home/Nav';
 import AdminSidebar from './AdminSidebar';
 import { Link } from 'react-router-dom';
-import { fetchAlojamientos, deleteAlojamiento, fetchTiposAlojamiento, fetchImagenes, fetchServicios, fetchAlojamientoServicios, deleteAlojamientoServicio } from '../../utils/api';
+import { fetchAlojamientos, deleteAlojamiento, fetchTiposAlojamiento, fetchImagenes, fetchServicios, fetchAlojamientoServicios, deleteAlojamientoServicio, deleteImagenes } from '../../utils/api';
 
 const Alojamientos = () => {
   const [alojamientos, setAlojamientos] = useState([]);
@@ -92,14 +92,21 @@ const Alojamientos = () => {
 
   const handleClickDelete = async (idAlojamiento) => {
     try {
-      const relaciones = alojamientoServicios.filter(servicio => servicio.idAlojamiento === idAlojamiento);
-  
+      const relaciones = alojamientoServicios.filter(servicio => servicio.idAlojamiento === idAlojamiento);  
       for (const relacion of relaciones) {
         const response = await deleteAlojamientoServicio(relacion.idAlojamientoServicio);
         if (!response.ok) {
           throw new Error('Error al eliminar la relación entre alojamiento y servicio');
         }
       }
+
+      const imagenesToDelete = imagenes.filter(img => img.idAlojamiento === idAlojamiento);
+      for (const imagen of imagenesToDelete) {
+        const response = await deleteImagenes(imagen.idImagen);
+        if (!response.ok) {
+          throw new Error('Error al eliminar imagen asociada');
+        }
+      }      
   
       const responseAlojamiento = await deleteAlojamiento(idAlojamiento);
       if (responseAlojamiento.ok) {
