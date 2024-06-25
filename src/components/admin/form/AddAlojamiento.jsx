@@ -16,8 +16,7 @@ const AddAlojamiento = () => {
     cantidadDormitorios: '',
     cantidadBanios: '',
     estado: '',
-    idTipoAlojamiento: '',
-    TipoAlojamiento: 0
+    idTipoAlojamiento: ''
   });
 
   useEffect(() => {
