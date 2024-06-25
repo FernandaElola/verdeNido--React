@@ -164,8 +164,8 @@ const AddAlojamiento = () => {
                 onChange={handleChange}
               >
                 <option value="">Seleccione un estado</option>
-                <option value="1">Reservado</option>
-                <option value="2">Disponible</option>
+                <option value="1">Disponible</option>
+                <option value="2">Reservado</option>
               </select>
             </div>
             <div>
