@@ -16,7 +16,8 @@ const AddAlojamiento = () => {
     cantidadDormitorios: '',
     cantidadBanios: '',
     estado: '',
-    TipoAlojamiento: ''
+    idTipoAlojamiento: '',
+    TipoAlojamiento: 0
   });
 
   useEffect(() => {
@@ -57,7 +58,7 @@ const AddAlojamiento = () => {
           cantidadDormitorios: '',
           cantidadBanios: '',
           estado: '',
-          TipoAlojamiento: '',
+          idTipoAlojamiento: '',
         });
 
         navigate('/admin/alojamientos');
@@ -169,11 +170,11 @@ const AddAlojamiento = () => {
               </select>
             </div>
             <div>
-              <label htmlFor="TipoAlojamiento">Tipo Alojamiento</label>
+              <label htmlFor="idTipoAlojamiento">Tipo Alojamiento</label>
               <select
-                id="TipoAlojamiento"
-                name="TipoAlojamiento"
-                value={form.TipoAlojamiento}
+                id="idTipoAlojamiento"
+                name="idTipoAlojamiento"
+                value={form.idTipoAlojamiento}
                 onChange={handleChange}
               >
                 <option value="">Seleccione un tipo de alojamiento</option>

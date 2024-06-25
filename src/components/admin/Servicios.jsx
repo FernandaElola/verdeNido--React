@@ -25,7 +25,7 @@ const Servicios = () => {
 
   const handleClickDelete = async (idServicio) => {
     try {
-      const response = await fetch(`http://localhost:3001/servicios/deleteServicio/${idServicio}`, {
+      const response = await fetch(`http://localhost:3001/servicio/deleteServicio/${idServicio}`, {
         method: 'DELETE'
       });
 

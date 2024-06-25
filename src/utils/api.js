@@ -148,17 +148,6 @@ export const fetchServicios = async () => {
   }
 };
 
-export const deleteServicios = async (id) => {
-  try {
-    const response = await fetch(`http://localhost:3001/servicio/deleteServicio/${id}`, {
-      method: 'DELETE',
-    });
-    return response;
-  } catch (error) {
-    throw new Error('Error al intentar borrar el servicio');
-  }
-};
-
 export const crearServicios = async (servicios) => {
   try {
     await Promise.all(servicios.map(async (servicio) => {

@@ -3,7 +3,7 @@ import './Admin.css';
 import Nav from '../Home/Nav';
 import AdminSidebar from './AdminSidebar';
 import { Link } from 'react-router-dom';
-import { fetchAlojamientos, deleteAlojamiento, fetchTiposAlojamiento, fetchImagenes, fetchServicios, fetchAlojamientoServicios } from '../../utils/api';
+import { fetchAlojamientos, deleteAlojamiento, fetchTiposAlojamiento, fetchImagenes, fetchServicios, fetchAlojamientoServicios, deleteAlojamientoServicio } from '../../utils/api';
 
 const Alojamientos = () => {
   const [alojamientos, setAlojamientos] = useState([]);
@@ -22,7 +22,7 @@ const Alojamientos = () => {
     CantidadDormitorios: '',
     CantidadBanios: '',
     Estado: '',
-    TipoAlojamiento: '',
+    idTipoAlojamiento: '',
   });
 
   useEffect(() => {
@@ -92,13 +92,23 @@ const Alojamientos = () => {
 
   const handleClickDelete = async (idAlojamiento) => {
     try {
-      const response = await deleteAlojamiento(idAlojamiento);
-      if (response.ok) {
+      const relaciones = alojamientoServicios.filter(servicio => servicio.idAlojamiento === idAlojamiento);
+  
+      for (const relacion of relaciones) {
+        const response = await deleteAlojamientoServicio(relacion.idAlojamientoServicio);
+        if (!response.ok) {
+          throw new Error('Error al eliminar la relación entre alojamiento y servicio');
+        }
+      }
+  
+      const responseAlojamiento = await deleteAlojamiento(idAlojamiento);
+      if (responseAlojamiento.ok) {
         setAlojamientos((prev) => prev.filter((alojamiento) => alojamiento.idAlojamiento !== idAlojamiento));
       } else {
         alert('Error al intentar borrar el alojamiento');
       }
     } catch (error) {
+      console.error('Error al intentar borrar el alojamiento:', error);
       alert('Error al intentar borrar el alojamiento');
     }
   };
@@ -115,7 +125,7 @@ const Alojamientos = () => {
       CantidadDormitorios: alojamiento.CantidadDormitorios,
       CantidadBanios: alojamiento.CantidadBanios,
       Estado: alojamiento.Estado,
-      TipoAlojamiento: alojamiento.TipoAlojamiento,
+      idTipoAlojamiento: alojamiento.idTipoAlojamiento,
     });
   };
 
@@ -161,7 +171,7 @@ const Alojamientos = () => {
       CantidadDormitorios: '',
       CantidadBanios: '',
       Estado: '',
-      TipoAlojamiento: '',
+      idTipoAlojamiento: '',
     });
   };
 
@@ -330,8 +340,8 @@ const Alojamientos = () => {
                     <td>
                       {editIndex === index ? (
                         <select
-                          name="TipoAlojamiento"
-                          value={editAlojamiento.TipoAlojamiento}
+                          name="idTipoAlojamiento"
+                          value={editAlojamiento.idTipoAlojamiento}
                           onChange={handleInputChange}
                         >
                           <option value="">Seleccione un tipo de alojamiento</option>
@@ -342,7 +352,7 @@ const Alojamientos = () => {
                           ))}
                         </select>
                       ) : (
-                        tiposAlojamiento.find((tipo) => tipo.idTipoAlojamiento === alojamiento.TipoAlojamiento)?.Descripcion || 'Desconocido'
+                        tiposAlojamiento.find((tipo) => tipo.idTipoAlojamiento === alojamiento.idTipoAlojamiento)?.Descripcion || 'Desconocido'
                       )}
                     </td>
                     <td>
