@@ -1,6 +1,5 @@
-// src/components/Nav.jsx
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom'; // Importa `useNavigate`
 import MenuDesplegable from './MenuDesplegable';
 import './Nav.css';
 
@@ -8,6 +7,7 @@ export const Nav = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const location = useLocation();
+  const navigate = useNavigate(); // Usa `useNavigate`
 
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
@@ -27,6 +27,15 @@ export const Nav = () => {
     window.location = path;
   };
 
+  const handleAlojamientosClick = (e) => {
+    e.preventDefault(); // Previene la navegación predeterminada
+    if (location.pathname === '/') {
+      window.scrollTo({ top: 1250, behavior: 'smooth' }); // Ajusta `top` según la distancia deseada
+    } else {
+      navigate('/'); // Navega a la página principal
+    }
+  };
+
   return (
     <nav className="navbar">
       {windowWidth > 900 ? (
@@ -37,7 +46,7 @@ export const Nav = () => {
           </ul>
           <Link className="logo" onClick={() => scrollToTopAndNavigate('/')} to="/"><img src="/img/LOGO FOTO.png" alt="Logo" /></Link>
           <ul className="nav-right">
-            <li><Link onClick={() => scrollToTopAndNavigate('/')} to="/">ALOJAMIENTOS</Link></li>
+            <li><a href="/#" onClick={handleAlojamientosClick}>ALOJAMIENTOS</a></li>
             <li><a href="/admin" onClick={() => window.scrollTo(0, 0)}>ADMIN</a></li>
           </ul>
         </>
